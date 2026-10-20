@@ -1,0 +1,4 @@
+split	documents	sentences	tokens
+train	540	12544	204578
+dev	318	2001	25148
+test	316	2077	25094
