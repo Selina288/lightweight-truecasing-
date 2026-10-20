@@ -42,7 +42,7 @@ Because the Web Treebank was created for syntactic annotation rather than normat
 
 ## Preliminary Work
 
-We have begun the project by completing a targeted literature search in the ACL Anthology, comparing seven peer reviewed studies of truecasing and capitalization restoration, and identifying the English Web Treebank as the shared experimental dataset. We have also verified the corpus's official training, development, and test organization and five genre categories from its published documentation, drafted the four label casing specification, and fixed the evaluation protocol before examining test predictions. Our next implementation milestone is to convert the corpus into the documented token format and validate the label distribution on the training and development files.
+We have completed a targeted literature review of seven peer-reviewed studies on truecasing and capitalization restoration. We have downloaded the UD English Web Treebank, implemented and validated the preprocessing pipeline, preserved the official train/dev/test splits, and generated token-level inputs and casing labels. We have verified the training and development label distributions and implemented three baselines: all lowercase, sentence-initial capitalization, and most frequent training form. These baselines have been evaluated on the development set, with overall, per-genre, per-class, and seen/unseen-word results recorded in the repository. Five automated tests pass. The next implementation milestone is a lightweight contextual classifier. Final test evaluation has not yet been performed.
 
 ## System Design and Implementation Strategy
 
@@ -55,7 +55,7 @@ We have begun the project by completing a targeted literature search in the ACL 
 | Full system | CRF or equivalent sequence model with contextual and character n gram features | Model neighboring casing decisions and improve generalization to rare or unseen words. |
 | Optional extension | Small pretrained encoder or existing strong truecaser | Provide an upper comparison if time and computing resources allow; prompt engineering will not be the project focus. |
 
-The lightweight models will use features that can be inspected directly: the current lowercased token, neighboring tokens, sentence position, token frequency, length, prefixes, suffixes, character n grams, digits, hyphens, apostrophes, and optionally POS tags already present in the corpus. We will implement the corpus conversion, feature extraction, reconstruction, and scoring code ourselves. Libraries may supply standard classifiers, but the NLP representation and experimental pipeline will be our contribution.
+The lightweight models will use directly inspectable features derived from the lowercased input: the current token, neighboring tokens, sentence position, training-set token frequency, length, prefixes, suffixes, character n-grams, digits, hyphens, and apostrophes. The main systems will not use the corpus's gold POS annotations as input features. If gold POS features are explored, they will be reported separately as an oracle-assisted experiment, since manually annotated POS tags would not normally be available for new input text. Gold annotations may still be used to define evaluation subsets, such as proper nouns, without being provided to the model. We will implement corpus conversion, feature extraction, reconstruction, and scoring ourselves. Libraries may supply standard classifiers, but the NLP representation and experimental pipeline will be our contribution.
 
 ## Evaluation Plan
 
