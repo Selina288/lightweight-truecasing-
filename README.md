@@ -89,3 +89,30 @@ The minimum deliverable is a reproducible data pipeline, three baselines, one co
 - Sunkara, Monica, Srikanth Ronanki, Kalpit Dixit, Sravan Bodapati, and Katrin Kirchhoff. 2020. *Robust Prediction of Punctuation and Truecasing for Medical ASR.* In Proceedings of the First Workshop on Natural Language Processing for Medical Conversations, 53-62.
 - Susanto, Raymond Hendy, Hai Leong Chieu, and Wei Lu. 2016. *Learning to Capitalize with Character-Level Recurrent Neural Networks: An Empirical Study.* In Proceedings of EMNLP 2016, 2090-2095.
 - Wang, Wei, Kevin Knight, and Daniel Marcu. 2006. *Capitalizing Machine Translation.* In Proceedings of the Human Language Technology Conference of the NAACL, 1-8.
+
+
+## Running the Current Implementation
+
+Use Python 3.10 or later. The preprocessing and baseline scripts use only the Python standard library. Run these commands from the project root:
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 src/preprocess.py
+python3 src/baselines.py
+```
+
+Place the official three CoNLL-U files under `data/raw/UD_English-EWT/` before preprocessing. Raw and processed data remain excluded by `.gitignore`.
+
+### Completed Preliminary Experiments
+
+The preprocessing pipeline and three baselines have now been implemented and run. Baseline word counts use only training data; all results below are from the official development split. No test data are read by the baseline script. These are development results, not final test results.
+
+| Baseline | Exact form accuracy | Macro-F1 | Capitalization-required accuracy |
+| --- | ---: | ---: | ---: |
+| All lowercase | 81.35% | 0.2243 | 0.00% |
+| Sentence initial | 87.65% | 0.3763 | 39.43% |
+| Most frequent training form | 86.00% | 0.4554 | 35.35% |
+
+Scores exclude tokens without cased letters. Macro-F1 averages the four casing classes, with zero for undefined class F1. Capitalization-required accuracy measures exact surface recovery for gold tokens whose class is not lowercase. The sentence-initial baseline uppercases the first cased letter of the first token; it does not skip an initial punctuation token to capitalize a later token. The lexical baseline resolves frequency ties in lexicographic order and leaves unseen words lowercase. Label accuracy and exact mixed-case spelling accuracy are different quantities.
+
+`results/baselines/dev_summary.tsv` contains overall, per-genre, seen-word and unseen-word scores. `dev_per_class.tsv` contains per-class precision, recall, F1 and support. Per-genre results here use one baseline fitted on all training genres; held-out-genre transfer experiments have not yet been implemented. The next modeling step is a contextual classifier compared against these fixed baselines.
