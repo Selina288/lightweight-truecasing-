@@ -1,0 +1,243 @@
+{
+  "test_used": false,
+  "evaluation_split": "dev",
+  "parameters": {
+    "solver": "saga",
+    "C": 1.0,
+    "max_iter": 500,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "data_sha256": {
+    "tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a"
+  },
+  "sklearn_version": "1.9.1",
+  "python_version": "3.14.0",
+  "runs": [
+    {
+      "target_genre": "answers",
+      "variant": "context",
+      "training_cased_tokens": 138594,
+      "feature_count": 38686,
+      "training_documents": 430,
+      "training_genres": [
+        "email",
+        "newsgroup",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14776,
+      "mixed_lexicon_size": 192,
+      "iterations": [
+        49
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4584,
+      "evaluation_documents": 61,
+      "seconds": 3.95
+    },
+    {
+      "target_genre": "answers",
+      "variant": "context_char",
+      "training_cased_tokens": 138594,
+      "feature_count": 84790,
+      "training_documents": 430,
+      "training_genres": [
+        "email",
+        "newsgroup",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14776,
+      "mixed_lexicon_size": 192,
+      "iterations": [
+        63
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4584,
+      "evaluation_documents": 61,
+      "seconds": 14.29
+    },
+    {
+      "target_genre": "email",
+      "variant": "context",
+      "training_cased_tokens": 137952,
+      "feature_count": 38028,
+      "training_documents": 502,
+      "training_genres": [
+        "answers",
+        "newsgroup",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14095,
+      "mixed_lexicon_size": 112,
+      "iterations": [
+        69
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4577,
+      "evaluation_documents": 15,
+      "seconds": 5.0
+    },
+    {
+      "target_genre": "email",
+      "variant": "context_char",
+      "training_cased_tokens": 137952,
+      "feature_count": 84092,
+      "training_documents": 502,
+      "training_genres": [
+        "answers",
+        "newsgroup",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14095,
+      "mixed_lexicon_size": 112,
+      "iterations": [
+        77
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4577,
+      "evaluation_documents": 15,
+      "seconds": 16.17
+    },
+    {
+      "target_genre": "newsgroup",
+      "variant": "context",
+      "training_cased_tokens": 147344,
+      "feature_count": 37949,
+      "training_documents": 512,
+      "training_genres": [
+        "answers",
+        "email",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14355,
+      "mixed_lexicon_size": 198,
+      "iterations": [
+        65
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 3638,
+      "evaluation_documents": 36,
+      "seconds": 6.34
+    },
+    {
+      "target_genre": "newsgroup",
+      "variant": "context_char",
+      "training_cased_tokens": 147344,
+      "feature_count": 85898,
+      "training_documents": 512,
+      "training_genres": [
+        "answers",
+        "email",
+        "reviews",
+        "weblog"
+      ],
+      "vocabulary_size": 14355,
+      "mixed_lexicon_size": 198,
+      "iterations": [
+        88
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 3638,
+      "evaluation_documents": 36,
+      "seconds": 21.29
+    },
+    {
+      "target_genre": "reviews",
+      "variant": "context",
+      "training_cased_tokens": 137329,
+      "feature_count": 38849,
+      "training_documents": 193,
+      "training_genres": [
+        "answers",
+        "email",
+        "newsgroup",
+        "weblog"
+      ],
+      "vocabulary_size": 14847,
+      "mixed_lexicon_size": 216,
+      "iterations": [
+        62
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4680,
+      "evaluation_documents": 192,
+      "seconds": 5.67
+    },
+    {
+      "target_genre": "reviews",
+      "variant": "context_char",
+      "training_cased_tokens": 137329,
+      "feature_count": 87406,
+      "training_documents": 193,
+      "training_genres": [
+        "answers",
+        "email",
+        "newsgroup",
+        "weblog"
+      ],
+      "vocabulary_size": 14847,
+      "mixed_lexicon_size": 216,
+      "iterations": [
+        85
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4680,
+      "evaluation_documents": 192,
+      "seconds": 19.48
+    },
+    {
+      "target_genre": "weblog",
+      "variant": "context",
+      "training_cased_tokens": 146313,
+      "feature_count": 37506,
+      "training_documents": 523,
+      "training_genres": [
+        "answers",
+        "email",
+        "newsgroup",
+        "reviews"
+      ],
+      "vocabulary_size": 14375,
+      "mixed_lexicon_size": 187,
+      "iterations": [
+        60
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4189,
+      "evaluation_documents": 14,
+      "seconds": 5.78
+    },
+    {
+      "target_genre": "weblog",
+      "variant": "context_char",
+      "training_cased_tokens": 146313,
+      "feature_count": 83983,
+      "training_documents": 523,
+      "training_genres": [
+        "answers",
+        "email",
+        "newsgroup",
+        "reviews"
+      ],
+      "vocabulary_size": 14375,
+      "mixed_lexicon_size": 187,
+      "iterations": [
+        85
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4189,
+      "evaluation_documents": 14,
+      "seconds": 21.0
+    }
+  ],
+  "all_genre_reference": "Pretrained ablation context/context_char models; metadata and data hashes checked.",
+  "source_only_resources": "Each fold fits vectorizer, vocabulary, mixed-case decoder and classifier on four source genres only.",
+  "subgroup_definition": "Both conditions use the held-out fold source vocabulary to define identical seen/unseen subsets.",
+  "limitations": "Training size and genre coverage both change; gaps are not isolated causal genre effects. No test data or significance testing."
+}
