@@ -1,0 +1,17 @@
+{
+  "local_only": true,
+  "models": [
+    "context_char",
+    "context",
+    "most_frequent_case",
+    "sentence_initial",
+    "all_lowercase"
+  ],
+  "automated_tests_passed": 22,
+  "http_checks": "All five models; output segment alignment; empty-input HTTP 400",
+  "browser_checks": "C model actual output and highlight, baseline switch and updated development scores",
+  "sample_input": "i visited new york on monday.",
+  "sample_C_output": "I visited New York on Monday.",
+  "test_data_used": false,
+  "new_training": false
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Truecase · Informal English</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="Truecase home">Aa<span>TRUECASE</span></a><span class="project-tag">NLP SYSTEMS PROJECT <span class="dot"></span> LOCAL DEMO</span></header>
+<main>
+<section class="intro"><p class="eyebrow">LIGHTWEIGHT MODELS · INFORMAL ENGLISH</p><h1>A little context.<br>A change of case.</h1><p class="lead">Restore capitalization in English text. Compare simple baselines with models that use context and character features.</p></section>
+<section class="workspace" aria-label="Truecasing demonstration">
+<form id="restore-form">
+<div class="form-head"><label for="input-text">01 / Your text</label><span id="counter">0 / 10,000</span></div>
+<textarea id="input-text" maxlength="10000" placeholder="i visited new york on monday." spellcheck="false" required>i visited new york on monday.</textarea>
+<div class="samples"><span>TRY AN EXAMPLE</span><button type="button" data-sample="i visited new york on monday.">Places</button><button type="button" data-sample="i bought an apple computer. i also bought an apple.">Context</button><button type="button" data-sample="hello everyone. welcome to our project!">Sentences</button></div>
+<div class="model-row"><div><label for="model">02 / Choose a model</label><select id="model" disabled><option>Loading models…</option></select></div><button class="primary" id="submit" disabled type="submit">Restore capitalization <span aria-hidden="true">↗</span></button></div>
+<p class="input-note">Input is converted to lowercase before prediction. Punctuation and spacing are preserved.</p>
+<p id="error" class="error" role="alert" hidden></p>
+</form>
+<section class="result-panel" aria-label="Model output">
+<div class="result-head"><h2>03 / Restored text</h2><button id="copy" type="button" disabled>Copy text</button></div>
+<div id="empty" class="empty"><span aria-hidden="true">Aa</span><p>Your restored text appears here.</p></div>
+<div id="output" class="output" aria-live="polite" hidden></div>
+<div class="result-foot"><span><i></i> Changed capitalization</span><span id="change-count">Ready when you are</span></div>
+</section>
+</section>
+<section class="details" aria-label="Evaluation and context"><article><p class="eyebrow">SELECTED MODEL · DEV RESULTS</p><div class="metrics"><div><strong id="f1">—</strong><span>Four-class Macro-F1</span></div><div><strong id="accuracy">—</strong><span>Exact-form accuracy</span></div></div><p>Scores come from the saved development experiments across all genres, not the text entered above. Uncased tokens are excluded.</p></article><article><p class="eyebrow">WHAT THIS DEMO SHOWS</p><h3>Predictions, with room for error.</h3><p>Names, abbreviations, and mixed-case words can remain difficult. The demo uses simple tokenization; official experiments use the corpus tokenization. An unseen mixed-case spelling may not be recoverable.</p></article></section>
+<footer><span>UD English Web Treebank · Coursework demonstration</span><span>Real trained models · No final test scores</span></footer>
+</main></body></html>

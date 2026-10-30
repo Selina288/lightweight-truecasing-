@@ -181,3 +181,22 @@ See [the error-analysis report](results/error_analysis/REPORT.md) for counts, me
 ```bash
 python src/error_analysis.py
 ```
+
+
+## Local Front End Demonstration
+
+The required local interface is now implemented in `web/` and served by `src/demo_server.py`. It calls the real trained B/C models or one of three baselines through a local Python API. This supersedes earlier status statements listing the front-end as future work. The interface is local-only and has not been publicly deployed. Team confirmation of contextual example reviews and final test evaluation remain outstanding.
+
+With dependencies installed and the environment activated:
+
+```bash
+python src/demo_server.py
+```
+
+Open http://127.0.0.1:8765 in your browser. Keep the terminal running; stop with Ctrl+C. Use `--port 8766` if the default port is busy. Do not open web/index.html directly. The server finds assets and model files relative to the project directory, even if started elsewhere.
+
+The interface converts input to lowercase, preserves punctuation and spacing, highlights changed tokens, supports model selection and copying, and displays the existing all-genre development scores. These are not scores for the typed sentence. It uses the same `predict_rows` and demo tokenizer as the command-line path; formal experiment tokenization remains unchanged. Inputs are processed locally and are not saved by the demo server.
+
+Model files remain ignored by Git. The complete local package includes them. From a fresh GitHub checkout, first obtain the official corpus and run preprocessing and ablation to generate the reference models. Missing models are disabled in the dropdown. No new package is needed beyond the existing requirements; the web server uses Python's standard library. See DEMO_GUIDE_zh.md for detailed setup steps.
+
+Twenty-two automated tests pass. HTTP checks exercised all five choices and invalid-input handling. Browser checks verified the C-model prediction, highlighting and switching to the all-lowercase baseline. No test data were used and no existing experiment scores were changed.
