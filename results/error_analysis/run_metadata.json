@@ -1,0 +1,30 @@
+{
+  "test_used": false,
+  "models_retrained": false,
+  "evaluation": "dev only",
+  "cased_tokens_per_condition": 21668,
+  "conditions": [
+    "all_genres",
+    "held_out"
+  ],
+  "held_out_definition": "Pooled target predictions from five separate source-only models, one per genre.",
+  "sampling": "Up to three SHA256-ranked token examples per condition/genre/transition; 90 local candidates.",
+  "review": "19 selected examples inspected by assistant with sentence context, including two extra mixed-case examples; team confirmation pending.",
+  "diagnostics": "Overlapping observable flags, not estimated causal categories or gold named-entity labels.",
+  "input_sha256": {
+    "tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a",
+    "ablation_context_dev_predictions.tsv": "03bfd62232534e8bdc31508df90f308af7070e7168edd01924353fe6b2dc0f8c",
+    "ablation_context_char_dev_predictions.tsv": "8ee748f4b2d6880552db498d1c26675bc05c9afa774c83ce063ad43c1884e9e4",
+    "crossgenre_answers_context_held_out_dev_predictions.tsv": "9f7aa01ee6fbed79089750ba01ae7ecab0f55639b3a3aba10b16ae9986b01053",
+    "crossgenre_answers_context_char_held_out_dev_predictions.tsv": "d188ec6bc4dd948364f29602cbb1acc53e20ab270956f6b44a812a1487987028",
+    "crossgenre_email_context_held_out_dev_predictions.tsv": "d17d1e93f3976bd32fc38fc2b9674cd461dde62abc04c0f3448edda548f430b1",
+    "crossgenre_email_context_char_held_out_dev_predictions.tsv": "ba504a878d9309e7d7b2cc2dd2a981cfaf2522f06d3808b3cdfec428c6f9b892",
+    "crossgenre_newsgroup_context_held_out_dev_predictions.tsv": "506ba48ce0c646e9892a3a1de8b8f9c6bbc8289ab0099e31f04307c62afbb076",
+    "crossgenre_newsgroup_context_char_held_out_dev_predictions.tsv": "9a464152d387ab2cd25380f01ffb7cead8f7274c017796b84a739f2378152e5b",
+    "crossgenre_reviews_context_held_out_dev_predictions.tsv": "3eb6822bbf487be37be94abeb8e2ebd7300d073535a857794b4d1979cca67dc4",
+    "crossgenre_reviews_context_char_held_out_dev_predictions.tsv": "d96f024213e501fefeedcc8131ad52cb7199d13cda22ca69e655172374c61171",
+    "crossgenre_weblog_context_held_out_dev_predictions.tsv": "e1a4a26495692f985866fffa37624b706127883536193e2cf6dc595ee2167cea",
+    "crossgenre_weblog_context_char_held_out_dev_predictions.tsv": "884ea937525b28fbef14cc6a48a404204a1796d6bcb9d0f0eeefe1f5cc72d74d"
+  }
+}

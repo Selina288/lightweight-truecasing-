@@ -42,7 +42,7 @@ Because the Web Treebank was created for syntactic annotation rather than normat
 
 ## Preliminary Work
 
-We have reviewed seven related studies, completed and validated corpus preprocessing, and evaluated three baselines and a first contextual logistic regression model on development data. Fifteen automated tests pass. The model uses only lowercased input and sentence-boundary information, and no gold POS features. The best baseline macro-F1 is 0.4554; the first contextual model achieves 0.5245. Feature ablations have now also been completed (see the latest section below). Held-out-genre experiments, qualitative error analysis, the front-end, and final test evaluation remain future work.
+We have reviewed seven related studies, completed and validated corpus preprocessing, and evaluated three baselines and a first contextual logistic regression model on development data. Eighteen automated tests pass. The model uses only lowercased input and sentence-boundary information, and no gold POS features. The best baseline macro-F1 is 0.4554; the first contextual model achieves 0.5245. Feature ablations have now also been completed (see the latest section below). Held-out-genre experiments, qualitative error analysis, the front-end, and final test evaluation remain future work.
 
 ## System Design and Implementation Strategy
 
@@ -153,7 +153,7 @@ The command-line demo uses a simple tokenizer and preserves input spacing. Offic
 
 Three Logistic Regression variants now compare lexical and positional features (A), added context (B), and added character features (C). All use the same training/development splits, fixed hyperparameters, reconstruction and scoring. This supersedes earlier next-step statements about character ablations: that stage is now complete. Earlier model results remain recorded as the initial experiment.
 
-The dev macro-F1 scores are A: 0.4892, B: 0.5245, and C: 0.5688. C achieves 92.26% exact accuracy overall and 69.93% on unseen words. These are development observations, not final test or held-out-genre results. See [the full ablation report](results/ablation/REPORT.md) for tables, definitions and limitations. Fifteen automated tests pass.
+The dev macro-F1 scores are A: 0.4892, B: 0.5245, and C: 0.5688. C achieves 92.26% exact accuracy overall and 69.93% on unseen words. These are development observations, not final test or held-out-genre results. See [the full ablation report](results/ablation/REPORT.md) for tables, definitions and limitations. Eighteen automated tests pass.
 
 ```bash
 python src/ablation.py
@@ -165,8 +165,19 @@ python src/truecase.py --model models/ablation/context_char.joblib "i visited ne
 
 The five held-out-genre experiments have now been completed for B (context) and C (context plus characters). Each fold uses four source training genres and the untouched target development portion for evaluation with fixed parameters. No target-genre training examples enter that fold's classifier, feature vocabulary or mixed-case decoder. These results supersede older statements that held-out-genre development experiments are future work; final test evaluation remains outstanding.
 
-See [the cross-genre report](results/crossgenre/REPORT.md) for results and limitations. Training size differs between the all-genre reference and four-genre conditions, so gaps must not be attributed solely to genre shift. Seen/unseen subsets use one common source-only vocabulary for both conditions. Fifteen tests pass. Next steps are qualitative dev error analysis and front-end integration before final test evaluation.
+See [the cross-genre report](results/crossgenre/REPORT.md) for results and limitations. Training size differs between the all-genre reference and four-genre conditions, so gaps must not be attributed solely to genre shift. Seen/unseen subsets use one common source-only vocabulary for both conditions. Eighteen tests pass. Next steps are qualitative dev error analysis and front-end integration before final test evaluation.
 
 ```bash
 python src/crossgenre.py
+```
+
+
+## Completed Development Error Analysis
+
+The saved B/C development predictions have now been analyzed under both all-genre and held-out-genre conditions. No retraining, gold correction or final testing was performed. C reduces overall exact errors, but it introduces new overcapitalization errors. Held-out Reviews illustrates why exact accuracy and four-class macro-F1 can disagree when rare uppercase classes change.
+
+See [the error-analysis report](results/error_analysis/REPORT.md) for counts, metric interpretation and limitations. Nineteen contextual examples were reviewed by the assistant; team confirmation is still pending and the sample does not estimate population error-category frequencies. This section supersedes older future-work statements about automatic dev error analysis. The required front-end, team review and final frozen test evaluation are still outstanding. Eighteen tests pass.
+
+```bash
+python src/error_analysis.py
 ```

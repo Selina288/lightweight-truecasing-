@@ -1,0 +1,11 @@
+condition	genre	both_correct	corrected_by_C	regressed_by_C	both_wrong	net_errors_removed
+all_genres	answers	4114	60	53	357	7
+all_genres	email	4097	92	31	357	61
+all_genres	newsgroup	3280	71	29	258	42
+all_genres	reviews	4266	41	34	339	7
+all_genres	weblog	3874	96	33	186	63
+held_out	answers	4101	63	61	359	2
+held_out	email	4029	106	30	412	76
+held_out	newsgroup	3234	70	34	300	36
+held_out	reviews	4242	50	47	341	3
+held_out	weblog	3778	128	31	252	97
