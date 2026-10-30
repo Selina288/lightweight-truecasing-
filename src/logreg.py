@@ -38,18 +38,32 @@ def is_first(rows, i):
     return i == 0 or sentence_key(rows[i]) != sentence_key(rows[i-1])
 
 
-def features(rows, i):
-    """Only lowercase input and sentence boundaries enter model features."""
+FEATURE_SETS = ('lexical', 'context', 'context_char')
+
+
+def features(rows, i, feature_set='context'):
+    """Features use only lowercase inputs and sentence boundaries, never gold."""
+    if feature_set not in FEATURE_SETS:
+        raise ValueError(feature_set)
     word = rows[i]['lowercase_input']
     first = is_first(rows, i)
-    last = i+1 == len(rows) or sentence_key(rows[i]) != sentence_key(rows[i+1])
-    return {
-        'word': word,
-        'previous': '<BOS>' if first else rows[i-1]['lowercase_input'],
-        'next': '<EOS>' if last else rows[i+1]['lowercase_input'],
-        'sentence_initial': float(first),
-        'length_scaled': len(word)/20.0,
-    }
+    result = dict(word=word, sentence_initial=float(first), length_scaled=len(word)/20.0)
+    if feature_set in ('context', 'context_char'):
+        last = i+1 == len(rows) or sentence_key(rows[i]) != sentence_key(rows[i+1])
+        result['previous'] = '<BOS>' if first else rows[i-1]['lowercase_input']
+        result['next'] = '<EOS>' if last else rows[i+1]['lowercase_input']
+    if feature_set == 'context_char':
+        for n in range(1,5):
+            if len(word) >= n:
+                result[f'prefix{n}'] = word[:n]
+                result[f'suffix{n}'] = word[-n:]
+        # Boundary-marked binary character 2-4 grams, L2-normalized per token.
+        marked = '^'+word+'$'
+        grams = {marked[j:j+n] for n in (2,3,4) for j in range(len(marked)-n+1)}
+        scale = len(grams)**-0.5 if grams else 1.0
+        for gram in grams:
+            result['char_ngram='+gram] = scale
+    return result
 
 
 def initial_capital(word):
@@ -76,7 +90,7 @@ def predict_rows(bundle, rows):
     outputs = [r['lowercase_input'] for r in rows]
     labels = ['uncased'] * len(rows)
     if indices:
-        x = solver_matrix(bundle['vectorizer'].transform(features(rows,i) for i in indices))
+        x = solver_matrix(bundle['vectorizer'].transform(features(rows,i,bundle.get('feature_set','context')) for i in indices))
         predictions = bundle['classifier'].predict(x)
         for i, label in zip(indices,predictions):
             labels[i] = str(label)

@@ -42,7 +42,7 @@ Because the Web Treebank was created for syntactic annotation rather than normat
 
 ## Preliminary Work
 
-We have reviewed seven related studies, completed and validated corpus preprocessing, and evaluated three baselines and a first contextual logistic regression model on development data. Nine automated tests pass. The model uses only lowercased input and sentence-boundary information, and no gold POS features. The best baseline macro-F1 is 0.4554; the first contextual model achieves 0.5245. Final test evaluation, character-feature ablations, held-out-genre experiments, and the front-end interface remain future work.
+We have reviewed seven related studies, completed and validated corpus preprocessing, and evaluated three baselines and a first contextual logistic regression model on development data. Twelve automated tests pass. The model uses only lowercased input and sentence-boundary information, and no gold POS features. The best baseline macro-F1 is 0.4554; the first contextual model achieves 0.5245. Feature ablations have now also been completed (see the latest section below). Held-out-genre experiments, qualitative error analysis, the front-end, and final test evaluation remain future work.
 
 ## System Design and Implementation Strategy
 
@@ -147,3 +147,15 @@ These are official development-split results. All four systems were scored by th
 The classifier converged in 64 iterations with a fixed initial configuration (C=1, SAGA, seed 42, tolerance 0.001). This is one initial development experiment, not a completed hyperparameter search. `run_metadata.json` records configuration and environment details. Per-genre scores here come from training on all genres; they are not held-out-genre transfer results. No character features have been added yet, so gains should not be attributed to context alone until the planned ablations are performed.
 
 The command-line demo uses a simple tokenizer and preserves input spacing. Official evaluation uses the corpus tokenization and sentence boundaries. The demo may therefore differ from corpus scoring, especially for contractions or ambiguous sentence boundaries. It is not yet the required front-end interface. Next steps are character features and controlled ablations, held-out-genre development experiments, error analysis, front-end integration, and final testing after the design is frozen.
+
+
+## Completed Feature Ablation Experiments
+
+Three Logistic Regression variants now compare lexical and positional features (A), added context (B), and added character features (C). All use the same training/development splits, fixed hyperparameters, reconstruction and scoring. This supersedes earlier next-step statements about character ablations: that stage is now complete. Earlier model results remain recorded as the initial experiment.
+
+The dev macro-F1 scores are A: 0.4892, B: 0.5245, and C: 0.5688. C achieves 92.26% exact accuracy overall and 69.93% on unseen words. These are development observations, not final test or held-out-genre results. See [the full ablation report](results/ablation/REPORT.md) for tables, definitions and limitations. Twelve automated tests pass.
+
+```bash
+python src/ablation.py
+python src/truecase.py --model models/ablation/context_char.joblib "i visited new york on monday."
+```

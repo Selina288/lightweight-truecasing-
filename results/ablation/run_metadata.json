@@ -1,0 +1,51 @@
+{
+  "split": "dev",
+  "test_used": false,
+  "parameters": {
+    "solver": "saga",
+    "C": 1.0,
+    "max_iter": 500,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "training_cased_tokens": 176883,
+  "runs": [
+    {
+      "feature_set": "lexical",
+      "features": 15570,
+      "iterations": [
+        61
+      ],
+      "converged": true,
+      "seconds": 4.18
+    },
+    {
+      "feature_set": "context",
+      "features": 43800,
+      "iterations": [
+        64
+      ],
+      "converged": true,
+      "seconds": 7.09
+    },
+    {
+      "feature_set": "context_char",
+      "features": 95669,
+      "iterations": [
+        82
+      ],
+      "converged": true,
+      "seconds": 21.74
+    }
+  ],
+  "python_version": "3.14.0",
+  "sklearn_version": "1.9.1",
+  "data_sha256": {
+    "tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a"
+  },
+  "control": "Same train/dev, classifier parameters, labels, decoder and scoring; features alone vary.",
+  "character_features": "Prefixes/suffixes length 1-4; boundary-marked binary character 2-4 grams with per-token L2 normalization.",
+  "scoring": "Four-class macro-F1 from reconstructed forms; uncased tokens excluded.",
+  "caution": "One fixed-parameter development comparison, not final test or held-out-genre results."
+}
