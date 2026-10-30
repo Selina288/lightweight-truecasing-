@@ -1,0 +1,30 @@
+{
+  "train_file": "tokens_train.tsv",
+  "evaluation_file": "tokens_dev.tsv",
+  "test_used": false,
+  "training_cased_tokens": 176883,
+  "feature_count": 43800,
+  "features": [
+    "current lowercase word",
+    "previous lowercase word",
+    "next lowercase word",
+    "sentence initial position",
+    "scaled word length"
+  ],
+  "gold_POS_used": false,
+  "vectorizer_fit": "train only",
+  "mixed_case_lexicon": "train only",
+  "solver": "saga",
+  "C": 1.0,
+  "max_iter": 500,
+  "tolerance": 0.001,
+  "random_state": 42,
+  "iterations": [
+    64
+  ],
+  "converged": true,
+  "sklearn_version": "1.9.1",
+  "python_version": "3.14.0",
+  "elapsed_seconds": 9.41,
+  "scoring": "Four-class macro-F1 derived from reconstructed forms; uncased tokens excluded"
+}

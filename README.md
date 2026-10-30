@@ -42,7 +42,7 @@ Because the Web Treebank was created for syntactic annotation rather than normat
 
 ## Preliminary Work
 
-We have completed a targeted literature review of seven peer-reviewed studies on truecasing and capitalization restoration. We have downloaded the UD English Web Treebank, implemented and validated the preprocessing pipeline, preserved the official train/dev/test splits, and generated token-level inputs and casing labels. We have verified the training and development label distributions and implemented three baselines: all lowercase, sentence-initial capitalization, and most frequent training form. These baselines have been evaluated on the development set, with overall, per-genre, per-class, and seen/unseen-word results recorded in the repository. Five automated tests pass. The next implementation milestone is a lightweight contextual classifier. Final test evaluation has not yet been performed.
+We have reviewed seven related studies, completed and validated corpus preprocessing, and evaluated three baselines and a first contextual logistic regression model on development data. Nine automated tests pass. The model uses only lowercased input and sentence-boundary information, and no gold POS features. The best baseline macro-F1 is 0.4554; the first contextual model achieves 0.5245. Final test evaluation, character-feature ablations, held-out-genre experiments, and the front-end interface remain future work.
 
 ## System Design and Implementation Strategy
 
@@ -55,7 +55,7 @@ We have completed a targeted literature review of seven peer-reviewed studies on
 | Full system | CRF or equivalent sequence model with contextual and character n gram features | Model neighboring casing decisions and improve generalization to rare or unseen words. |
 | Optional extension | Small pretrained encoder or existing strong truecaser | Provide an upper comparison if time and computing resources allow; prompt engineering will not be the project focus. |
 
-The lightweight models will use directly inspectable features derived from the lowercased input: the current token, neighboring tokens, sentence position, training-set token frequency, length, prefixes, suffixes, character n-grams, digits, hyphens, and apostrophes. The main systems will not use the corpus's gold POS annotations as input features. If gold POS features are explored, they will be reported separately as an oracle-assisted experiment, since manually annotated POS tags would not normally be available for new input text. Gold annotations may still be used to define evaluation subsets, such as proper nouns, without being provided to the model. We will implement corpus conversion, feature extraction, reconstruction, and scoring ourselves. Libraries may supply standard classifiers, but the NLP representation and experimental pipeline will be our contribution.
+The lightweight models will use features that can be inspected directly: the current lowercased token, neighboring tokens, sentence position, token frequency, length, prefixes, suffixes, character n grams, digits, hyphens, apostrophes, with no gold POS annotations as model inputs. We will implement the corpus conversion, feature extraction, reconstruction, and scoring code ourselves. Libraries may supply standard classifiers, but the NLP representation and experimental pipeline will be our contribution.
 
 ## Evaluation Plan
 
@@ -93,7 +93,7 @@ The minimum deliverable is a reproducible data pipeline, three baselines, one co
 
 ## Running the Current Implementation
 
-Use Python 3.10 or later. The preprocessing and baseline scripts use only the Python standard library. Run these commands from the project root:
+Use Python 3.12 or later (tested with Python 3.14). Preprocessing and baselines use only the standard library; the new contextual model requires the packages in requirements.txt. Run these commands from the project root:
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -115,4 +115,35 @@ The preprocessing pipeline and three baselines have now been implemented and run
 
 Scores exclude tokens without cased letters. Macro-F1 averages the four casing classes, with zero for undefined class F1. Capitalization-required accuracy measures exact surface recovery for gold tokens whose class is not lowercase. The sentence-initial baseline uppercases the first cased letter of the first token; it does not skip an initial punctuation token to capitalize a later token. The lexical baseline resolves frequency ties in lexicographic order and leaves unseen words lowercase. Label accuracy and exact mixed-case spelling accuracy are different quantities.
 
-`results/baselines/dev_summary.tsv` contains overall, per-genre, seen-word and unseen-word scores. `dev_per_class.tsv` contains per-class precision, recall, F1 and support. Per-genre results here use one baseline fitted on all training genres; held-out-genre transfer experiments have not yet been implemented. The next modeling step is a contextual classifier compared against these fixed baselines.
+`results/baselines/dev_summary.tsv` contains overall, per-genre, seen-word and unseen-word scores. `dev_per_class.tsv` contains per-class precision, recall, F1 and support. Per-genre results here use one baseline fitted on all training genres; held-out-genre transfer experiments have not yet been implemented. The first contextual classifier has now been implemented; see the next section.
+
+
+## First Contextual Logistic Regression Model
+
+The current word, previous word, next word, sentence-initial position, and scaled token length are the only model features. Vocabulary and feature mappings are fitted on training data only. Gold surface forms and casing labels are used only as training targets or evaluation references. No gold POS features or target-genre test data enter this experiment.
+
+Install and run from the project root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python src/logreg.py
+python src/truecase.py "i visited new york on monday."
+```
+
+The processed train/dev files must already exist. If needed, place the official corpus files in `data/raw/UD_English-EWT/` and run `python src/preprocess.py` first. Training saves `models/logreg.joblib`, which is ignored by Git, and writes evaluation tables under `results/logreg/`. Token predictions are kept locally in the ignored processed-data directory. Pinning package versions records the tested environment; small numerical differences may occur across platforms.
+
+| System | Exact form accuracy | Four-class macro-F1 | Capitalization-required accuracy |
+| --- | ---: | ---: | ---: |
+| all_lowercase | 81.35% | 0.2243 | 0.00% |
+| sentence_initial | 87.65% | 0.3763 | 39.43% |
+| most_frequent_case | 86.00% | 0.4554 | 35.35% |
+| logistic_regression | 91.43% | 0.5245 | 64.95% |
+
+These are official development-split results. All four systems were scored by the same evaluator, excluding uncased tokens. Macro-F1 is computed from the casing classes of reconstructed output forms, matching the baseline scorer. The primary model ranking uses macro-F1; exact-form accuracy breaks ties. A predicted mixed-case class is reconstructed with its most frequent mixed-case training form, or lowercase for an unseen word. Thus raw classifier-label scores may differ from output-derived scores. This decoder uses only training data and is part of the reported system.
+
+The classifier converged in 64 iterations with a fixed initial configuration (C=1, SAGA, seed 42, tolerance 0.001). This is one initial development experiment, not a completed hyperparameter search. `run_metadata.json` records configuration and environment details. Per-genre scores here come from training on all genres; they are not held-out-genre transfer results. No character features have been added yet, so gains should not be attributed to context alone until the planned ablations are performed.
+
+The command-line demo uses a simple tokenizer and preserves input spacing. Official evaluation uses the corpus tokenization and sentence boundaries. The demo may therefore differ from corpus scoring, especially for contractions or ambiguous sentence boundaries. It is not yet the required front-end interface. Next steps are character features and controlled ablations, held-out-genre development experiments, error analysis, front-end integration, and final testing after the design is frozen.
