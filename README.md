@@ -220,3 +220,12 @@ python src/ingenre.py
 ```
 
 Data size and genre coverage differ between conditions. For the new three-condition subgroup comparison, seen/unseen membership is defined by the same target-train vocabulary across all conditions; this differs from the earlier source-vocabulary-based transfer subgroup table. Overall reference scores reproduce the earlier experiments. Team confirmation of reviewed examples and the frozen final test evaluation remain outstanding. The local front-end is unchanged.
+
+
+## Completed Final Test Evaluation
+
+Final quantitative evaluation is now complete with frozen models, after the unified script reproduced 138 prior dev rows. Independent metrics verified 198 test summary rows; all frozen source/model hashes still match. No retraining, gold editing, feature changes or parameter tuning occurred after viewing test results. Twenty-seven tests pass.
+
+C, selected before testing, achieves 91.50% exact-form accuracy and 0.5823 four-class macro-F1 on the official test split. All six systems and all three genre training conditions are reported in [the final test report](results/final_test/REPORT.md). These results supersede earlier statements that final test scoring is future work.
+
+The 19 qualitative examples remain team_confirmed=No, following the user's report that the group has not checked them. Quantitative evaluation does not imply human confirmation. See docs/TEAM_REVIEW_STATUS.md and docs/FINAL_EXECUTION_STATUS.md. The next tasks are the team's example review, final paper and presentation. The front end remains a local demonstration and its displayed experiment scores remain labeled dev.

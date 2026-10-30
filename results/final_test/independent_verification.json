@@ -1,0 +1,9 @@
+{
+  "independent_scoring": "scikit-learn metrics on saved frozen-model predictions",
+  "verified_test_summary_rows": 198,
+  "frozen_artifacts_still_match": true,
+  "target_token_ids_match": true,
+  "models_retrained": false,
+  "gold_changed": false,
+  "team_review_confirmed": false
+}
