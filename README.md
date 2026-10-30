@@ -200,3 +200,23 @@ The interface converts input to lowercase, preserves punctuation and spacing, hi
 Model files remain ignored by Git. The complete local package includes them. From a fresh GitHub checkout, first obtain the official corpus and run preprocessing and ablation to generate the reference models. Missing models are disabled in the dropdown. No new package is needed beyond the existing requirements; the web server uses Python's standard library. See DEMO_GUIDE_zh.md for detailed setup steps.
 
 Twenty-two automated tests pass. HTTP checks exercised all five choices and invalid-input handling. Browser checks verified the C-model prediction, highlighting and switching to the all-lowercase baseline. No test data were used and no existing experiment scores were changed.
+
+
+## Pretest Preparation
+
+The 19 assistant-reviewed examples have passed a second data and saved-model verification, with five interpretations refined. This is not human/team confirmation. Final test evaluation has not been run. See docs/FINAL_EVALUATION_PLAN.md for the candidate protocol and docs/PRETEST_ARTIFACT_MANIFEST.json for current artifact hashes. The original proposal's in-genre-only training condition remains an explicit scope item to resolve before freezing the final evaluation.
+
+```bash
+python src/verify_review.py
+```
+
+
+## Completed In Genre Only Experiments
+
+The proposal's in-genre-only condition has now been implemented for B and C on all five genres. Ten target-only models converged; 25 automated tests pass. This resolves the previously noted missing condition. The new [in-genre report](results/ingenre/REPORT.md) compares all-genre, in-genre-only and held-out training on identical target development tokens. No test data were read.
+
+```bash
+python src/ingenre.py
+```
+
+Data size and genre coverage differ between conditions. For the new three-condition subgroup comparison, seen/unseen membership is defined by the same target-train vocabulary across all conditions; this differs from the earlier source-vocabulary-based transfer subgroup table. Overall reference scores reproduce the earlier experiments. Team confirmation of reviewed examples and the frozen final test evaluation remain outstanding. The local front-end is unchanged.

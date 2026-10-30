@@ -1,0 +1,263 @@
+{
+  "test_used": false,
+  "models_newly_trained": 10,
+  "parameters": {
+    "solver": "saga",
+    "C": 1.0,
+    "max_iter": 500,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "data_sha256": {
+    "tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a"
+  },
+  "runs": [
+    {
+      "target_genre": "answers",
+      "variant": "context",
+      "training_cased_tokens": 38289,
+      "feature_count": 14581,
+      "training_documents": 110,
+      "training_genres": [
+        "answers"
+      ],
+      "vocabulary_size": 5362,
+      "mixed_lexicon_size": 37,
+      "iterations": [
+        65
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4584,
+      "evaluation_documents": 61,
+      "model_sha256": {
+        "all_genres": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+        "held_out": "ba4d086cc390c23afad54b80c5e8c485785d99c1e614b97ccf5e0867e6d1b776",
+        "in_genre": "42cb36c4ceb21baae64f410a80bbf7e45660cbd039e4d72e1d42ea23ff8c8ffa"
+      },
+      "seconds": 1.2
+    },
+    {
+      "target_genre": "answers",
+      "variant": "context_char",
+      "training_cased_tokens": 38289,
+      "feature_count": 40843,
+      "training_documents": 110,
+      "training_genres": [
+        "answers"
+      ],
+      "vocabulary_size": 5362,
+      "mixed_lexicon_size": 37,
+      "iterations": [
+        82
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4584,
+      "evaluation_documents": 61,
+      "model_sha256": {
+        "all_genres": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+        "held_out": "7acf7e6c453a4ebd55128598459b50a4c80f13fb0a3ca39a482175938a9bc112",
+        "in_genre": "6d208591cca765af807eecd44ee860acf3af81d2bb62bf148ac64f584919857f"
+      },
+      "seconds": 4.05
+    },
+    {
+      "target_genre": "email",
+      "variant": "context",
+      "training_cased_tokens": 38931,
+      "feature_count": 14932,
+      "training_documents": 38,
+      "training_genres": [
+        "email"
+      ],
+      "vocabulary_size": 5977,
+      "mixed_lexicon_size": 116,
+      "iterations": [
+        27
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4577,
+      "evaluation_documents": 15,
+      "model_sha256": {
+        "all_genres": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+        "held_out": "50821104321aae10310635966b5f889e90e8ae85b4088f462030145f1928b26b",
+        "in_genre": "7225712625677146ff7f782d1ab7c2ec6d1f3bc6c90945db2dc949b6e6a1f8c9"
+      },
+      "seconds": 1.03
+    },
+    {
+      "target_genre": "email",
+      "variant": "context_char",
+      "training_cased_tokens": 38931,
+      "feature_count": 40586,
+      "training_documents": 38,
+      "training_genres": [
+        "email"
+      ],
+      "vocabulary_size": 5977,
+      "mixed_lexicon_size": 116,
+      "iterations": [
+        46
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4577,
+      "evaluation_documents": 15,
+      "model_sha256": {
+        "all_genres": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+        "held_out": "91d9d1f4bb53a67834a902dbcbc09731c100691b138b2e27334a0f1ad16add68",
+        "in_genre": "2f79036780c92992018811ccbf9d387276afa778ec2d923cfa23f08f6cd66589"
+      },
+      "seconds": 3.07
+    },
+    {
+      "target_genre": "newsgroup",
+      "variant": "context",
+      "training_cased_tokens": 29539,
+      "feature_count": 16262,
+      "training_documents": 28,
+      "training_genres": [
+        "newsgroup"
+      ],
+      "vocabulary_size": 6187,
+      "mixed_lexicon_size": 28,
+      "iterations": [
+        88
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 3638,
+      "evaluation_documents": 36,
+      "model_sha256": {
+        "all_genres": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+        "held_out": "5dd3998b8cea197a3905b7aa4466e379f43d10e2bf025ad8012fec5836d9935d",
+        "in_genre": "435be5f5af0af79bba819ee4c3b8dc2b24ebba451e60ff9cac141037e67da25a"
+      },
+      "seconds": 1.18
+    },
+    {
+      "target_genre": "newsgroup",
+      "variant": "context_char",
+      "training_cased_tokens": 29539,
+      "feature_count": 41399,
+      "training_documents": 28,
+      "training_genres": [
+        "newsgroup"
+      ],
+      "vocabulary_size": 6187,
+      "mixed_lexicon_size": 28,
+      "iterations": [
+        63
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 3638,
+      "evaluation_documents": 36,
+      "model_sha256": {
+        "all_genres": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+        "held_out": "b290f899b0da09254c07b00fd7cd87334aff07d1e34b36ac0ded4dc28ce2d668",
+        "in_genre": "3d7f892c6488581e5cfe59dc2411b64f9c8a72bc908bde9a206a6f4d4dcfbf93"
+      },
+      "seconds": 3.17
+    },
+    {
+      "target_genre": "reviews",
+      "variant": "context",
+      "training_cased_tokens": 39554,
+      "feature_count": 14255,
+      "training_documents": 347,
+      "training_genres": [
+        "reviews"
+      ],
+      "vocabulary_size": 5221,
+      "mixed_lexicon_size": 11,
+      "iterations": [
+        333
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4680,
+      "evaluation_documents": 192,
+      "model_sha256": {
+        "all_genres": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+        "held_out": "31f750ab9020ffd72c954016c6fc9b0de4425cfd92fc906e94dd8c7f7beede3a",
+        "in_genre": "d81512ee031f3476e7b0e477286eb1a453d6c0ddf00a19ddf1563a5d5c123d9d"
+      },
+      "seconds": 3.25
+    },
+    {
+      "target_genre": "reviews",
+      "variant": "context_char",
+      "training_cased_tokens": 39554,
+      "feature_count": 37213,
+      "training_documents": 347,
+      "training_genres": [
+        "reviews"
+      ],
+      "vocabulary_size": 5221,
+      "mixed_lexicon_size": 11,
+      "iterations": [
+        243
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4680,
+      "evaluation_documents": 192,
+      "model_sha256": {
+        "all_genres": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+        "held_out": "78255656c6e6fb5f762cbe1704c05e58f48a077be05cd4ba2f7457dc92cbb35e",
+        "in_genre": "4d15df07ef755c27a7506c1330603692931aba0a492851dd8e9a8defcedd57d9"
+      },
+      "seconds": 8.27
+    },
+    {
+      "target_genre": "weblog",
+      "variant": "context",
+      "training_cased_tokens": 30570,
+      "feature_count": 16004,
+      "training_documents": 17,
+      "training_genres": [
+        "weblog"
+      ],
+      "vocabulary_size": 5817,
+      "mixed_lexicon_size": 38,
+      "iterations": [
+        49
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4189,
+      "evaluation_documents": 14,
+      "model_sha256": {
+        "all_genres": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+        "held_out": "353358996b44ebd4e189ab3cc74c4706f4c2313bcf790c6dbc39721908645661",
+        "in_genre": "8ddc43c50ee733ec96827edfeba92973f6d4014fcba5230f5c31d0d0f0d8dcf0"
+      },
+      "seconds": 0.93
+    },
+    {
+      "target_genre": "weblog",
+      "variant": "context_char",
+      "training_cased_tokens": 30570,
+      "feature_count": 42334,
+      "training_documents": 17,
+      "training_genres": [
+        "weblog"
+      ],
+      "vocabulary_size": 5817,
+      "mixed_lexicon_size": 38,
+      "iterations": [
+        63
+      ],
+      "converged": true,
+      "evaluation_cased_tokens": 4189,
+      "evaluation_documents": 14,
+      "model_sha256": {
+        "all_genres": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+        "held_out": "266cf1c8f590d45de3a80bcccf9fa7db370aa1f9d8d1952627f72e5e52e4e91f",
+        "in_genre": "bf1be606c5346552cd62d7d976366cdba31da0dda277cd0a73dd5f819e7276b1"
+      },
+      "seconds": 3.29
+    }
+  ],
+  "sklearn_version": "1.9.1",
+  "python_version": "3.14.0",
+  "training_policy": "In-genre vectorizer, decoder, vocabulary and classifier fitted only on target genre train.",
+  "subset_definition": "All three conditions share target-train vocabulary for identical seen/unseen subsets. This differs from crossgenre report source-vocabulary subsets.",
+  "scope": "Fixed-parameter exploratory dev comparison, no condition-specific tuning.",
+  "limitation": "Training sizes differ across all, in-genre and held-out conditions; domain and data-size effects are confounded."
+}

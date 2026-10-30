@@ -1,0 +1,9 @@
+{
+  "automated_tests_passed": 25,
+  "independently_verified_summary_rows": 90,
+  "all_ten_fits_converged": true,
+  "same_target_tokens_across_conditions": true,
+  "same_target_vocabulary_subgroups": true,
+  "reference_scores_reproduced": true,
+  "test_used": false
+}
