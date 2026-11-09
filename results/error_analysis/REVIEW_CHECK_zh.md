@@ -1,3 +1,5 @@
+> Current review status: the user reports team confirmation of eight selected development examples (IDs 1, 5, 2, 8, 12, 14, 15, 19); eleven remain unconfirmed. See ../../docs/TEAM_REVIEW_STATUS.md. Historical pending statements below describe the earlier execution stage. No models, gold labels or experiment scores changed.
+
 # 19个例子的二次复核
 
 已经逐条核对官方dev中的原始形式和上下文，并重新加载对应模型验证B/C输出。19个例子的gold、输出、seen/unseen、句首位置和变化类型全部一致。没有修改gold，没有重训，也没有读取test。

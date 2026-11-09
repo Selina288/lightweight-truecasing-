@@ -1,3 +1,5 @@
+> Current review status: the user reports team confirmation of eight selected development examples (IDs 1, 5, 2, 8, 12, 14, 15, 19); eleven remain unconfirmed. See TEAM_REVIEW_STATUS.md. Historical pending statements below describe the earlier execution stage. No models, gold labels or experiment scores changed.
+
 # Final Execution Status
 
 The user requested completion of the fixed final evaluation and separately stated that team review of the 19 qualitative examples remains pending. The two statuses are reported separately.

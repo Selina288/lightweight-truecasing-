@@ -1,0 +1,16 @@
+{
+  "source": "https://github.com/UniversalDependencies/UD_English-EWT",
+  "local_readme_version": "2.18 -- 2026-05-15",
+  "release_starting_point": "https://github.com/UniversalDependencies/UD_English-EWT/tree/r2.18",
+  "identity_policy": "Hashes calculated from the original local files used by the completed experiments. The upstream release archive was not freshly downloaded and compared in this cleanup. A matching version label alone does not establish byte identity. Stop on any hash mismatch.",
+  "raw": {
+    "data/raw/UD_English-EWT/en_ewt-ud-train.conllu": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143",
+    "data/raw/UD_English-EWT/en_ewt-ud-dev.conllu": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8",
+    "data/raw/UD_English-EWT/en_ewt-ud-test.conllu": "fa024f43dc5da3c5ac02563bc9bd0e974f46cbb1560823976a8f342a37dc494a"
+  },
+  "processed": {
+    "data/processed/tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "data/processed/tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a",
+    "data/processed/tokens_test.tsv": "143ea72fb6b1a0c97374c5de49d8af5ef0f8a9ce2e9f17f3195e2f578b9c461f"
+  }
+}

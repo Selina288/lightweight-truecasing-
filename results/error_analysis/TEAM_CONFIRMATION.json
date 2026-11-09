@@ -1,0 +1,19 @@
+{
+  "status": "user_reported_team_confirmation",
+  "confirmed_original_example_numbers": [
+    1,
+    5,
+    2,
+    8,
+    12,
+    14,
+    15,
+    19
+  ],
+  "confirmed_count": 8,
+  "remaining_unconfirmed": 11,
+  "reviewer_names_provided": false,
+  "independent_review_observed": false,
+  "agreement_measured": false,
+  "model_or_score_changes": false
+}

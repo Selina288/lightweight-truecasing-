@@ -1,3 +1,5 @@
+> Current review status: the user reports team confirmation of eight selected development examples (IDs 1, 5, 2, 8, 12, 14, 15, 19); eleven remain unconfirmed. See ../../docs/TEAM_REVIEW_STATUS.md. Historical pending statements below describe the earlier execution stage. No models, gold labels or experiment scores changed.
+
 # Development Error Analysis
 
 This analysis compares B (context) and C (context plus character features), using saved development predictions only. No models were retrained, no gold labels were changed, and no test data were read. Uncased tokens are excluded, leaving 21,668 cased tokens per condition. Held-out totals pool the five separate target-genre evaluations and do not represent a single model.
@@ -59,3 +61,8 @@ This is exploratory development analysis; the target development data have alrea
 Run `python src/error_analysis.py` to regenerate the four automatic tables and the local candidate sample. The reviewed examples are a separately retained annotation artifact, not automatically generated causal labels. Eighteen automated tests pass; counts were independently reconciled to all 20 prior per-genre scores and paired prediction transitions.
 
 Corpus excerpts are from the [UD English EWT contributors](https://github.com/UniversalDependencies/UD_English-EWT). Excerpts are shortened context windows with brackets added around the target. Corpus-derived excerpts retain CC BY-SA 4.0 terms; see DATA_LICENSE.txt. Analysis and tentative review notes are added here.
+
+
+## Second review check
+
+All 19 retained examples were checked against the development corpus and reloaded model predictions. Gold forms, outputs, source-vocabulary novelty, positions and paired transitions agree. Five interpretations were qualified to separate observations from hypotheses, including the classifier-versus-decoder distinction in NiMo. Team confirmation is still pending. See review_verification.json and REVIEW_CHECK_zh.md. No test data or gold labels were changed.

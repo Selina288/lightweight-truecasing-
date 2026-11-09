@@ -1,0 +1,227 @@
+{
+  "review_count": 19,
+  "test_used": false,
+  "gold_changed": false,
+  "models_retrained": false,
+  "annotation_review": "Second assistant context review; not human/team confirmation.",
+  "reviewed_file_sha256": "bf22642712b6c6733159bc4a05b879f1862bc300c638912df25ee451e490b7cf",
+  "model_sha256": {
+    "models/ablation/context.joblib": "c8a7441b3ac4499ca2ef6b5ff9ed5b8763ce41b3b7e4f7f5ced7fa2132795b3b",
+    "models/ablation/context_char.joblib": "c44080876bcf2227919cf5171fcfc684d4126d34486054571c050b25b444ee66",
+    "models/crossgenre/reviews_context.joblib": "31f750ab9020ffd72c954016c6fc9b0de4425cfd92fc906e94dd8c7f7beede3a",
+    "models/crossgenre/reviews_context_char.joblib": "78255656c6e6fb5f762cbe1704c05e58f48a077be05cd4ba2f7457dc92cbb35e",
+    "models/crossgenre/weblog_context.joblib": "353358996b44ebd4e189ab3cc74c4706f4c2313bcf790c6dbc39721908645661",
+    "models/crossgenre/weblog_context_char.joblib": "266cf1c8f590d45de3a80bcccf9fa7db370aa1f9d8d1952627f72e5e52e4e91f"
+  },
+  "examples": [
+    {
+      "example": 1,
+      "condition": "all_genres",
+      "genre": "answers",
+      "token_id": "21",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 2,
+      "condition": "all_genres",
+      "genre": "answers",
+      "token_id": "4",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 3,
+      "condition": "all_genres",
+      "genre": "email",
+      "token_id": "22",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 4,
+      "condition": "all_genres",
+      "genre": "email",
+      "token_id": "10",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 5,
+      "condition": "all_genres",
+      "genre": "email",
+      "token_id": "1",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 6,
+      "condition": "all_genres",
+      "genre": "newsgroup",
+      "token_id": "23",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 7,
+      "condition": "all_genres",
+      "genre": "newsgroup",
+      "token_id": "9",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 8,
+      "condition": "all_genres",
+      "genre": "reviews",
+      "token_id": "4",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 9,
+      "condition": "all_genres",
+      "genre": "reviews",
+      "token_id": "10",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 10,
+      "condition": "all_genres",
+      "genre": "reviews",
+      "token_id": "12",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 11,
+      "condition": "all_genres",
+      "genre": "reviews",
+      "token_id": "2",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 12,
+      "condition": "all_genres",
+      "genre": "weblog",
+      "token_id": "20",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 13,
+      "condition": "held_out",
+      "genre": "reviews",
+      "token_id": "8",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 14,
+      "condition": "held_out",
+      "genre": "reviews",
+      "token_id": "1",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 15,
+      "condition": "held_out",
+      "genre": "reviews",
+      "token_id": "18",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 16,
+      "condition": "held_out",
+      "genre": "weblog",
+      "token_id": "15",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 17,
+      "condition": "held_out",
+      "genre": "weblog",
+      "token_id": "2",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 18,
+      "condition": "all_genres",
+      "genre": "weblog",
+      "token_id": "38",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    },
+    {
+      "example": 19,
+      "condition": "all_genres",
+      "genre": "email",
+      "token_id": "7",
+      "surface_and_models_verified": true,
+      "seen_status_verified": true,
+      "position_verified": true,
+      "transition_verified": true,
+      "team_confirmed": false
+    }
+  ]
+}

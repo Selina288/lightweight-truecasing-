@@ -1,0 +1,19 @@
+{
+  "scope": "Repository documentation and review-record synchronization; paper, slides and actual member contributions excluded",
+  "original_research_tests": 27,
+  "current_tests_passed": 31,
+  "new_repository_record_tests": 4,
+  "current_review_check": "19 unique retained rows; eight confirmed selections; eleven unconfirmed; selected records and metadata agree",
+  "model_backed_review_check": "All 19 examples match original frozen train/dev files and saved B/C outputs",
+  "raw_data_hashes_checked": 3,
+  "processed_data_hashes_checked": 3,
+  "all_original_frozen_hashes_match": true,
+  "published_quantitative_scores_changed": false,
+  "original_research_models_changed": false,
+  "frozen_source_files_changed": false,
+  "fresh_upstream_archive_download_validated": false,
+  "fresh_dependency_install_validated": false,
+  "fresh_full_training_reproduction_performed": false,
+  "github_update_status": "Prepared locally; current GitHub connector reports push=false",
+  "confirmation_basis": "User-reported team confirmation; no agreement study or named independent reviewers supplied"
+}

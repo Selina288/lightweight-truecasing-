@@ -1,3 +1,5 @@
+> Current review status: the user reports team confirmation of eight selected development examples (IDs 1, 5, 2, 8, 12, 14, 15, 19); eleven remain unconfirmed. See ../../docs/TEAM_REVIEW_STATUS.md. Historical pending statements below describe the earlier execution stage. No models, gold labels or experiment scores changed.
+
 # Final Frozen Model Evaluation
 
 The unified evaluator first reproduced 138 previously recorded development score rows. Code, training resources and all saved models were inventoried in FINAL_FROZEN_MANIFEST.json before final test execution. It then loaded the same frozen artifacts and ran the official test evaluation without retraining, gold editing, feature changes or parameter tuning. No model changes were made after viewing test results. Independent scikit-learn scoring verified all 198 final summary rows, and frozen artifact hashes still match. Twenty-seven automated tests pass.
