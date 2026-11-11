@@ -1,0 +1,1570 @@
+{
+  "status": "completed",
+  "evaluation_split": "dev",
+  "test_tokens_read": false,
+  "original_test_results_known_before_design": true,
+  "system": "C/context_char",
+  "budget": 20000,
+  "sampling_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "parameters": {
+    "solver": "saga",
+    "C": 1.0,
+    "max_iter": 500,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "supervised_sampling": "Uniform sampling without replacement among cased train tokens in each eligible pool; sorted back into original order.",
+  "other_genres_policy": "Pooled other four genres, sampled proportional in expectation to cased-token availability; not balanced by genre.",
+  "context_policy": "Original immediate lowercase neighbors and true sentence boundaries retained; only sampled anchors contribute gold labels/forms or decoder entries.",
+  "matched_unit": "Number of supervised cased tokens, not documents/sentences or total unique lowercase context exposure.",
+  "seed_policy": "Sampling varies; LR solver random_state remains 42 in all fits. Same numeric seed indexes a descriptive pair, not shared training examples.",
+  "uncertainty": "Sample standard deviation over five training subsamples on fixed dev, not a confidence interval over new evaluation data; subsamples can overlap.",
+  "limits": "Controls supervised count, not vocabulary, document count, length, label priors or multi-source diversity. No causal genre-only, target-blind-selection, significance or new confirmatory test claim.",
+  "runs": [
+    {
+      "target_genre": "answers",
+      "condition": "in_genre",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        84
+      ],
+      "features": 31726,
+      "training_documents": 110,
+      "training_sentences": 2539,
+      "training_genre_counts": {
+        "answers": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2086,
+        "lowercase": 17704,
+        "all_uppercase": 189,
+        "mixed_case": 21
+      },
+      "lowercase_context_tokens_including_anchors": 36006,
+      "vocabulary_size": 3687,
+      "mixed_lexicon_size": 20,
+      "selection_sha256": "1d89c15bfb6d5ddd11f74617f1e4f2415e821f6f7934aec9bebf68562449d522",
+      "model_sha256": "27bd775d328ed5708a9e4d38d2c34415d6b481e2e5a38a88bb815421c5dc625c",
+      "seconds": 1.64
+    },
+    {
+      "target_genre": "answers",
+      "condition": "other_genres",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        122
+      ],
+      "features": 36946,
+      "training_documents": 430,
+      "training_sentences": 7192,
+      "training_genre_counts": {
+        "weblog": 4354,
+        "email": 5704,
+        "newsgroup": 4251,
+        "reviews": 5691
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3102,
+        "lowercase": 16453,
+        "mixed_case": 33,
+        "all_uppercase": 412
+      },
+      "lowercase_context_tokens_including_anchors": 51464,
+      "vocabulary_size": 4817,
+      "mixed_lexicon_size": 31,
+      "selection_sha256": "e00f0ed9f9fe2ed9ee5f8d7125ae4ce9c38d0d3bd8bcd6e3100fd0985facf51a",
+      "model_sha256": "7f81b09d4eb2f99cd9bacfcf0f2af6644327a5369f5ba36808097394daf629d5",
+      "seconds": 2.21
+    },
+    {
+      "target_genre": "answers",
+      "condition": "in_genre",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        86
+      ],
+      "features": 31510,
+      "training_documents": 110,
+      "training_sentences": 2550,
+      "training_genre_counts": {
+        "answers": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2172,
+        "lowercase": 17608,
+        "all_uppercase": 197,
+        "mixed_case": 23
+      },
+      "lowercase_context_tokens_including_anchors": 35994,
+      "vocabulary_size": 3677,
+      "mixed_lexicon_size": 22,
+      "selection_sha256": "dde6b079495669189aa45e336a7bd2a2d722ea5f620b6b763f860c4ba34ea6b6",
+      "model_sha256": "a973d0d263d91e3f9caad121a2aa5e7a401de00a38eeaa7ed873c0f798b35f3a",
+      "seconds": 1.6
+    },
+    {
+      "target_genre": "answers",
+      "condition": "other_genres",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        87
+      ],
+      "features": 37531,
+      "training_documents": 430,
+      "training_sentences": 7187,
+      "training_genre_counts": {
+        "weblog": 4474,
+        "email": 5483,
+        "newsgroup": 4276,
+        "reviews": 5767
+      },
+      "training_label_counts": {
+        "lowercase": 16340,
+        "initial_uppercase": 3218,
+        "all_uppercase": 405,
+        "mixed_case": 37
+      },
+      "lowercase_context_tokens_including_anchors": 51580,
+      "vocabulary_size": 4876,
+      "mixed_lexicon_size": 32,
+      "selection_sha256": "4e7adfd205b265f849902d3c4b58f87c8bdec0e0c681b71ce2fe9acf27af8a13",
+      "model_sha256": "23ea2d1a200c51370ccb6f4ba64d2cc2fa3fe4b3e7b3a8961f3425c47780486a",
+      "seconds": 2.01
+    },
+    {
+      "target_genre": "answers",
+      "condition": "in_genre",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        90
+      ],
+      "features": 30809,
+      "training_documents": 110,
+      "training_sentences": 2543,
+      "training_genre_counts": {
+        "answers": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2141,
+        "lowercase": 17650,
+        "all_uppercase": 190,
+        "mixed_case": 19
+      },
+      "lowercase_context_tokens_including_anchors": 35965,
+      "vocabulary_size": 3684,
+      "mixed_lexicon_size": 19,
+      "selection_sha256": "e9071f8ce09848ea75ae1232ff54ef4ef4e3ce67af66106f1fbac6383c1256cb",
+      "model_sha256": "16f321fb736b8870aefaad5611b48aa1194cea9ae20aa760ccb14e90f7a81ae2",
+      "seconds": 2.3
+    },
+    {
+      "target_genre": "answers",
+      "condition": "other_genres",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        111
+      ],
+      "features": 37466,
+      "training_documents": 430,
+      "training_sentences": 7202,
+      "training_genre_counts": {
+        "weblog": 4362,
+        "email": 5733,
+        "newsgroup": 4147,
+        "reviews": 5758
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3160,
+        "lowercase": 16424,
+        "all_uppercase": 384,
+        "mixed_case": 32
+      },
+      "lowercase_context_tokens_including_anchors": 51464,
+      "vocabulary_size": 4817,
+      "mixed_lexicon_size": 31,
+      "selection_sha256": "1654aed551a1a7dbaa3b85d6ee1f71202124ac9643c39b519475a9e78055c134",
+      "model_sha256": "530128afe7ca47d3f169b60f1630d639186c5f2084ecfe6306d9f363e4f84344",
+      "seconds": 2.12
+    },
+    {
+      "target_genre": "answers",
+      "condition": "in_genre",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        90
+      ],
+      "features": 31146,
+      "training_documents": 110,
+      "training_sentences": 2538,
+      "training_genre_counts": {
+        "answers": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 17682,
+        "initial_uppercase": 2113,
+        "all_uppercase": 187,
+        "mixed_case": 18
+      },
+      "lowercase_context_tokens_including_anchors": 35969,
+      "vocabulary_size": 3677,
+      "mixed_lexicon_size": 18,
+      "selection_sha256": "895e657bd4f53b14114573a39b13d8f502f533682af23a967c8e546303f38281",
+      "model_sha256": "88008e873c20dc42b47641e027a5de2deca8d1d97396d27d0890f83eeb841710",
+      "seconds": 1.7
+    },
+    {
+      "target_genre": "answers",
+      "condition": "other_genres",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        49
+      ],
+      "features": 37536,
+      "training_documents": 430,
+      "training_sentences": 7156,
+      "training_genre_counts": {
+        "weblog": 4351,
+        "email": 5614,
+        "newsgroup": 4359,
+        "reviews": 5676
+      },
+      "training_label_counts": {
+        "lowercase": 16414,
+        "initial_uppercase": 3125,
+        "all_uppercase": 405,
+        "mixed_case": 56
+      },
+      "lowercase_context_tokens_including_anchors": 51732,
+      "vocabulary_size": 4854,
+      "mixed_lexicon_size": 48,
+      "selection_sha256": "a4cd9edea45ab59a74dd3522556f230586e2e859e03ba2e379e57d3527c74644",
+      "model_sha256": "f305e9661c4d4017c98f1a795066a4a6bdd16c712084cddf9f8dfe483fad1ff6",
+      "seconds": 1.49
+    },
+    {
+      "target_genre": "answers",
+      "condition": "in_genre",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        91
+      ],
+      "features": 31649,
+      "training_documents": 110,
+      "training_sentences": 2553,
+      "training_genre_counts": {
+        "answers": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2145,
+        "lowercase": 17633,
+        "all_uppercase": 206,
+        "mixed_case": 16
+      },
+      "lowercase_context_tokens_including_anchors": 36010,
+      "vocabulary_size": 3716,
+      "mixed_lexicon_size": 16,
+      "selection_sha256": "11d070344714db3062ba65f545373940355fb99f21e3edade46080e5f65d199a",
+      "model_sha256": "102918c3b08d4619242fd3a1a53589f7283d3a7ecebeb138e0384a85e6161f94",
+      "seconds": 1.77
+    },
+    {
+      "target_genre": "answers",
+      "condition": "other_genres",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        51
+      ],
+      "features": 37125,
+      "training_documents": 430,
+      "training_sentences": 7169,
+      "training_genre_counts": {
+        "weblog": 4493,
+        "email": 5539,
+        "newsgroup": 4204,
+        "reviews": 5764
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3080,
+        "lowercase": 16467,
+        "all_uppercase": 419,
+        "mixed_case": 34
+      },
+      "lowercase_context_tokens_including_anchors": 51567,
+      "vocabulary_size": 4797,
+      "mixed_lexicon_size": 32,
+      "selection_sha256": "3e9a3d1edbfc3f9802c55624c39ccc8cdefcea84576fa758bdeb675decd07bd2",
+      "model_sha256": "de2b855a83e447e864aeac9829a51bfae10bdc4d7ccafc134c953b981b659d38",
+      "seconds": 1.44
+    },
+    {
+      "target_genre": "email",
+      "condition": "in_genre",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        40
+      ],
+      "features": 31615,
+      "training_documents": 38,
+      "training_sentences": 3252,
+      "training_genre_counts": {
+        "email": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3785,
+        "lowercase": 15537,
+        "all_uppercase": 575,
+        "mixed_case": 103
+      },
+      "lowercase_context_tokens_including_anchors": 36571,
+      "vocabulary_size": 3847,
+      "mixed_lexicon_size": 74,
+      "selection_sha256": "e1903b693bf6cb375ccec440276f3cf1b8bae7acadc970e072e492dabbbe44ed",
+      "model_sha256": "26420bee3715c6ca522b245e6e6ab9d8c422d2ea5f2b7723f94551a63a2e2fa2",
+      "seconds": 1.19
+    },
+    {
+      "target_genre": "email",
+      "condition": "other_genres",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        80
+      ],
+      "features": 36867,
+      "training_documents": 502,
+      "training_sentences": 6960,
+      "training_genre_counts": {
+        "weblog": 4411,
+        "newsgroup": 4368,
+        "answers": 5479,
+        "reviews": 5742
+      },
+      "training_label_counts": {
+        "lowercase": 16895,
+        "initial_uppercase": 2735,
+        "all_uppercase": 340,
+        "mixed_case": 30
+      },
+      "lowercase_context_tokens_including_anchors": 51570,
+      "vocabulary_size": 4670,
+      "mixed_lexicon_size": 29,
+      "selection_sha256": "571cc7e3f179bc7b6a4c49338e64d741bc116c8f78611d9ab2927e18d762e17e",
+      "model_sha256": "b06c1dff25319ade94d669d58f6e9ec418b213db5cbd841de1d69a05498de8ff",
+      "seconds": 1.7
+    },
+    {
+      "target_genre": "email",
+      "condition": "in_genre",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        79
+      ],
+      "features": 31720,
+      "training_documents": 38,
+      "training_sentences": 3254,
+      "training_genre_counts": {
+        "email": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3851,
+        "lowercase": 15511,
+        "all_uppercase": 536,
+        "mixed_case": 102
+      },
+      "lowercase_context_tokens_including_anchors": 36574,
+      "vocabulary_size": 3844,
+      "mixed_lexicon_size": 73,
+      "selection_sha256": "7cae9a30eafae9d7a6459f1ae29111f7a8eb125a339fd54a89ddf673a5ae0e53",
+      "model_sha256": "1238c5cc503b8504f556596269e7a5c7e52e21e92a580264ede52ee93dabab9f",
+      "seconds": 1.59
+    },
+    {
+      "target_genre": "email",
+      "condition": "other_genres",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        70
+      ],
+      "features": 36949,
+      "training_documents": 502,
+      "training_sentences": 6990,
+      "training_genre_counts": {
+        "weblog": 4382,
+        "newsgroup": 4367,
+        "answers": 5531,
+        "reviews": 5720
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2671,
+        "lowercase": 16964,
+        "all_uppercase": 351,
+        "mixed_case": 14
+      },
+      "lowercase_context_tokens_including_anchors": 51690,
+      "vocabulary_size": 4754,
+      "mixed_lexicon_size": 14,
+      "selection_sha256": "06553c878a4498f2dd67b621d932d587d83de6988bc0935c7aa14041c1db9fe3",
+      "model_sha256": "36bbd9bfcab03e0f22a26f1af1e69390bc472c0ba92e78fc18dd99695885d5f2",
+      "seconds": 1.72
+    },
+    {
+      "target_genre": "email",
+      "condition": "in_genre",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        50
+      ],
+      "features": 31424,
+      "training_documents": 38,
+      "training_sentences": 3254,
+      "training_genre_counts": {
+        "email": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3782,
+        "lowercase": 15579,
+        "all_uppercase": 533,
+        "mixed_case": 106
+      },
+      "lowercase_context_tokens_including_anchors": 36588,
+      "vocabulary_size": 3839,
+      "mixed_lexicon_size": 71,
+      "selection_sha256": "b38233f7d53bf747f6b329dabab1d000d77cc3c97c7098ffabefb814a297764a",
+      "model_sha256": "02c22fa661f6be896222638f819ca7b6a4835757b487445b8eb83943c87be1a0",
+      "seconds": 1.3
+    },
+    {
+      "target_genre": "email",
+      "condition": "other_genres",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        68
+      ],
+      "features": 36635,
+      "training_documents": 502,
+      "training_sentences": 6964,
+      "training_genre_counts": {
+        "weblog": 4337,
+        "newsgroup": 4326,
+        "answers": 5534,
+        "reviews": 5803
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2720,
+        "lowercase": 16950,
+        "all_uppercase": 315,
+        "mixed_case": 15
+      },
+      "lowercase_context_tokens_including_anchors": 51703,
+      "vocabulary_size": 4716,
+      "mixed_lexicon_size": 15,
+      "selection_sha256": "7d2a2846f04abfe0b145ec96e6119188022f82810d9f82452df0d3b1b61ed0fb",
+      "model_sha256": "b02ce36596aea5da959c87c207b81d3f0206b0a87fe6bff88bad6faf7706809a",
+      "seconds": 1.75
+    },
+    {
+      "target_genre": "email",
+      "condition": "in_genre",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        47
+      ],
+      "features": 31210,
+      "training_documents": 38,
+      "training_sentences": 3265,
+      "training_genre_counts": {
+        "email": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 15556,
+        "initial_uppercase": 3802,
+        "all_uppercase": 541,
+        "mixed_case": 101
+      },
+      "lowercase_context_tokens_including_anchors": 36509,
+      "vocabulary_size": 3788,
+      "mixed_lexicon_size": 72,
+      "selection_sha256": "cc000d4a067a7ef2d0f39cab55cdb17944d3b840e437c8f28015c718e62c670c",
+      "model_sha256": "b75d3ff6c2bb99717de4b00df1f95efac8a33d1890b3414ac69334ea685e7a65",
+      "seconds": 1.81
+    },
+    {
+      "target_genre": "email",
+      "condition": "other_genres",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        61
+      ],
+      "features": 36322,
+      "training_documents": 502,
+      "training_sentences": 6984,
+      "training_genre_counts": {
+        "weblog": 4511,
+        "newsgroup": 4243,
+        "answers": 5442,
+        "reviews": 5804
+      },
+      "training_label_counts": {
+        "lowercase": 16933,
+        "initial_uppercase": 2768,
+        "all_uppercase": 282,
+        "mixed_case": 17
+      },
+      "lowercase_context_tokens_including_anchors": 51610,
+      "vocabulary_size": 4631,
+      "mixed_lexicon_size": 16,
+      "selection_sha256": "8fcab9dac04c31f74bb7986f850c737cccd24f57fbc8ae61f648147dcaf5c9c1",
+      "model_sha256": "d677499177c4915142af19b20f691cc62495970f50855ee92c3dbe7a58ea1500",
+      "seconds": 1.52
+    },
+    {
+      "target_genre": "email",
+      "condition": "in_genre",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        42
+      ],
+      "features": 31177,
+      "training_documents": 38,
+      "training_sentences": 3252,
+      "training_genre_counts": {
+        "email": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3687,
+        "lowercase": 15662,
+        "all_uppercase": 557,
+        "mixed_case": 94
+      },
+      "lowercase_context_tokens_including_anchors": 36468,
+      "vocabulary_size": 3770,
+      "mixed_lexicon_size": 67,
+      "selection_sha256": "3a0b3f2c627e41637967e74e24e7c63cdf26a06804a98f42a6fad059c6ed7561",
+      "model_sha256": "7cdbd26b440ba7fa7e9486c4807df13944d77f9f544776f21aff3ecbc8900dc0",
+      "seconds": 1.21
+    },
+    {
+      "target_genre": "email",
+      "condition": "other_genres",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        63
+      ],
+      "features": 36132,
+      "training_documents": 502,
+      "training_sentences": 6928,
+      "training_genre_counts": {
+        "weblog": 4481,
+        "newsgroup": 4297,
+        "answers": 5558,
+        "reviews": 5664
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2737,
+        "lowercase": 16923,
+        "all_uppercase": 322,
+        "mixed_case": 18
+      },
+      "lowercase_context_tokens_including_anchors": 51785,
+      "vocabulary_size": 4679,
+      "mixed_lexicon_size": 17,
+      "selection_sha256": "83f52646023ebbf011b448dd9cefb11b76e28bd106b6b4e49b20ac8636d25c5c",
+      "model_sha256": "af008e82fea9eb60147ff463c1f77e3399054704a130607fe8942aef1788e846",
+      "seconds": 1.51
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "in_genre",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        76
+      ],
+      "features": 35065,
+      "training_documents": 28,
+      "training_sentences": 1773,
+      "training_genre_counts": {
+        "newsgroup": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 16500,
+        "initial_uppercase": 3152,
+        "all_uppercase": 327,
+        "mixed_case": 21
+      },
+      "lowercase_context_tokens_including_anchors": 31518,
+      "vocabulary_size": 4645,
+      "mixed_lexicon_size": 16,
+      "selection_sha256": "8250421f8d38f85ef2252b1ba86d03dab676b4497fd1a1db5a13800e00aaa02e",
+      "model_sha256": "e17f742ab8856910056008538679ccc28086cfd0bd4e84c2d65d1020b4e05fb7",
+      "seconds": 1.58
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "other_genres",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        50
+      ],
+      "features": 36138,
+      "training_documents": 512,
+      "training_sentences": 7636,
+      "training_genre_counts": {
+        "weblog": 4192,
+        "email": 5212,
+        "answers": 5174,
+        "reviews": 5422
+      },
+      "training_label_counts": {
+        "lowercase": 16590,
+        "initial_uppercase": 2977,
+        "all_uppercase": 393,
+        "mixed_case": 40
+      },
+      "lowercase_context_tokens_including_anchors": 51849,
+      "vocabulary_size": 4543,
+      "mixed_lexicon_size": 32,
+      "selection_sha256": "2cbed457cbcd3952936507a0b1bfc4a6e2859daf815181b2a4f490c58030df6d",
+      "model_sha256": "30814f443915e414aab5bd6768a0faaf0f22c8644c8c7d1d38da25fa9f358b12",
+      "seconds": 1.38
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "in_genre",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        63
+      ],
+      "features": 35153,
+      "training_documents": 28,
+      "training_sentences": 1778,
+      "training_genre_counts": {
+        "newsgroup": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 16515,
+        "initial_uppercase": 3143,
+        "all_uppercase": 321,
+        "mixed_case": 21
+      },
+      "lowercase_context_tokens_including_anchors": 31614,
+      "vocabulary_size": 4635,
+      "mixed_lexicon_size": 16,
+      "selection_sha256": "f8c9bcaafa4321c5b65993d4d49703158da58298f17c298ec068d3c7fa23d790",
+      "model_sha256": "9aba0aa5dad703b3e2c94b38879f6edadc819b3d631538b3b8a5753ffc26c4eb",
+      "seconds": 1.46
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "other_genres",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        55
+      ],
+      "features": 36794,
+      "training_documents": 512,
+      "training_sentences": 7666,
+      "training_genre_counts": {
+        "weblog": 4130,
+        "email": 5280,
+        "answers": 5227,
+        "reviews": 5363
+      },
+      "training_label_counts": {
+        "lowercase": 16622,
+        "initial_uppercase": 2945,
+        "all_uppercase": 388,
+        "mixed_case": 45
+      },
+      "lowercase_context_tokens_including_anchors": 52038,
+      "vocabulary_size": 4581,
+      "mixed_lexicon_size": 41,
+      "selection_sha256": "1f850488282da1295583e4b8d4a9fe96d00db6038255014d42996ff915a00fb3",
+      "model_sha256": "e2512856def40b8c772a5164985fdfd9ec90202746da67d0d8751488014fc63d",
+      "seconds": 1.53
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "in_genre",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        72
+      ],
+      "features": 35255,
+      "training_documents": 28,
+      "training_sentences": 1776,
+      "training_genre_counts": {
+        "newsgroup": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 16442,
+        "initial_uppercase": 3207,
+        "all_uppercase": 326,
+        "mixed_case": 25
+      },
+      "lowercase_context_tokens_including_anchors": 31622,
+      "vocabulary_size": 4634,
+      "mixed_lexicon_size": 20,
+      "selection_sha256": "b459e77f81af45cbe805b661e2ee573da058b960c666598e8cc5d39f3de6f867",
+      "model_sha256": "8cbabad57d01429d1c480a4014eee53c8f7df4dc466ea0b98068ed6716b7ca16",
+      "seconds": 1.63
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "other_genres",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        74
+      ],
+      "features": 36333,
+      "training_documents": 512,
+      "training_sentences": 7656,
+      "training_genre_counts": {
+        "weblog": 4191,
+        "email": 5205,
+        "answers": 5232,
+        "reviews": 5372
+      },
+      "training_label_counts": {
+        "lowercase": 16752,
+        "initial_uppercase": 2853,
+        "all_uppercase": 356,
+        "mixed_case": 39
+      },
+      "lowercase_context_tokens_including_anchors": 51777,
+      "vocabulary_size": 4619,
+      "mixed_lexicon_size": 35,
+      "selection_sha256": "d2c1da6a76f5418ae03e707eb60e71505ba6d851570df76c96c691550a9741f7",
+      "model_sha256": "4a2044796365f2c827d7364c91391860b130d8efb7ce13f5cec76570aee6e6bb",
+      "seconds": 1.75
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "in_genre",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        74
+      ],
+      "features": 34969,
+      "training_documents": 28,
+      "training_sentences": 1767,
+      "training_genre_counts": {
+        "newsgroup": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 16495,
+        "initial_uppercase": 3150,
+        "all_uppercase": 330,
+        "mixed_case": 25
+      },
+      "lowercase_context_tokens_including_anchors": 31609,
+      "vocabulary_size": 4649,
+      "mixed_lexicon_size": 21,
+      "selection_sha256": "6e4e8089873940cb67e0f7154460357f013d7dfc69548d07a336d7c1d74c4381",
+      "model_sha256": "685f659f0978daae2f1da628156cdcaed56d9aa5c71441c714bd0332e612a6de",
+      "seconds": 2.06
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "other_genres",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        63
+      ],
+      "features": 36802,
+      "training_documents": 512,
+      "training_sentences": 7663,
+      "training_genre_counts": {
+        "weblog": 4092,
+        "email": 5268,
+        "answers": 5243,
+        "reviews": 5397
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2864,
+        "lowercase": 16705,
+        "all_uppercase": 400,
+        "mixed_case": 31
+      },
+      "lowercase_context_tokens_including_anchors": 51873,
+      "vocabulary_size": 4656,
+      "mixed_lexicon_size": 30,
+      "selection_sha256": "28145622b87b8289d3574a6390929c76f96fe8fcc7b3265e64ed512b3df5e5c5",
+      "model_sha256": "53f863af30efc25100370f9a95d0e00a7521b3fabcef7ba8d0524e08b9ff5514",
+      "seconds": 1.5
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "in_genre",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        205
+      ],
+      "features": 35309,
+      "training_documents": 28,
+      "training_sentences": 1784,
+      "training_genre_counts": {
+        "newsgroup": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 16471,
+        "initial_uppercase": 3174,
+        "all_uppercase": 327,
+        "mixed_case": 28
+      },
+      "lowercase_context_tokens_including_anchors": 31637,
+      "vocabulary_size": 4709,
+      "mixed_lexicon_size": 21,
+      "selection_sha256": "bcde4266d351f069f96cbd2b2a254b24500a66c8c04ad4bac4700014f5bc3351",
+      "model_sha256": "36ff24a7608e4ec914cb8f0922371dc31521f22eb7932bec81c3948bef59def0",
+      "seconds": 2.99
+    },
+    {
+      "target_genre": "newsgroup",
+      "condition": "other_genres",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        57
+      ],
+      "features": 36805,
+      "training_documents": 512,
+      "training_sentences": 7632,
+      "training_genre_counts": {
+        "weblog": 4115,
+        "email": 5363,
+        "answers": 5182,
+        "reviews": 5340
+      },
+      "training_label_counts": {
+        "lowercase": 16686,
+        "initial_uppercase": 2903,
+        "all_uppercase": 371,
+        "mixed_case": 40
+      },
+      "lowercase_context_tokens_including_anchors": 51809,
+      "vocabulary_size": 4637,
+      "mixed_lexicon_size": 36,
+      "selection_sha256": "b679defc9884e9b280b3c843e84a6c09fdcc2a98310b5ae3d8052d1f5d3a18e9",
+      "model_sha256": "7a5937e61b03fc15853103b24e356dfb886b34bda7e2f50433f78228a75de66d",
+      "seconds": 1.43
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "in_genre",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        332
+      ],
+      "features": 28076,
+      "training_documents": 347,
+      "training_sentences": 2651,
+      "training_genre_counts": {
+        "reviews": 20000
+      },
+      "training_label_counts": {
+        "lowercase": 17096,
+        "initial_uppercase": 2404,
+        "all_uppercase": 491,
+        "mixed_case": 9
+      },
+      "lowercase_context_tokens_including_anchors": 36542,
+      "vocabulary_size": 3505,
+      "mixed_lexicon_size": 7,
+      "selection_sha256": "371bef1b0c7b1903fadcad41b9f73526db09938398ea7242e8e444d8c1b7adb4",
+      "model_sha256": "432e133a32fe208e5e74bf6ddaef1cd918209399ef1422c1a93ec2672f48e61b",
+      "seconds": 3.98
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "other_genres",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        56
+      ],
+      "features": 37838,
+      "training_documents": 193,
+      "training_sentences": 7104,
+      "training_genre_counts": {
+        "weblog": 4504,
+        "email": 5615,
+        "newsgroup": 4378,
+        "answers": 5503
+      },
+      "training_label_counts": {
+        "lowercase": 16552,
+        "initial_uppercase": 3065,
+        "all_uppercase": 340,
+        "mixed_case": 43
+      },
+      "lowercase_context_tokens_including_anchors": 51643,
+      "vocabulary_size": 4810,
+      "mixed_lexicon_size": 38,
+      "selection_sha256": "3bfb65443e1c8985e824f942a7820ace0d3b4c76113ac3061757d1c12706e254",
+      "model_sha256": "17ba77c92b655740f7fb3c97ed4fab3a82bcd3735c8640a039b80e446b70ffd7",
+      "seconds": 1.48
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "in_genre",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        198
+      ],
+      "features": 28227,
+      "training_documents": 347,
+      "training_sentences": 2655,
+      "training_genre_counts": {
+        "reviews": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2440,
+        "lowercase": 17061,
+        "all_uppercase": 492,
+        "mixed_case": 7
+      },
+      "lowercase_context_tokens_including_anchors": 36557,
+      "vocabulary_size": 3476,
+      "mixed_lexicon_size": 7,
+      "selection_sha256": "cba239e1ae5bda41f7fe625c6d8a4274760d70e4c4256966651f4b829bc3a5d6",
+      "model_sha256": "e0c9434279e0d01494ffce3e69dfb7437212bcb6270f121915089f0a6dcb0cb2",
+      "seconds": 2.69
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "other_genres",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        55
+      ],
+      "features": 38435,
+      "training_documents": 193,
+      "training_sentences": 7170,
+      "training_genre_counts": {
+        "weblog": 4417,
+        "email": 5694,
+        "newsgroup": 4251,
+        "answers": 5638
+      },
+      "training_label_counts": {
+        "lowercase": 16517,
+        "initial_uppercase": 3086,
+        "all_uppercase": 344,
+        "mixed_case": 53
+      },
+      "lowercase_context_tokens_including_anchors": 51424,
+      "vocabulary_size": 4892,
+      "mixed_lexicon_size": 45,
+      "selection_sha256": "55408ff378de9d6208b04772b0edfa41125514f758dedf0e7f27576aef9d9465",
+      "model_sha256": "c4550a57d5a234e867f7bd39e925e324d3809baddb5b2e406458f951c1f28b43",
+      "seconds": 1.45
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "in_genre",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        297
+      ],
+      "features": 28206,
+      "training_documents": 347,
+      "training_sentences": 2644,
+      "training_genre_counts": {
+        "reviews": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2364,
+        "lowercase": 17143,
+        "all_uppercase": 484,
+        "mixed_case": 9
+      },
+      "lowercase_context_tokens_including_anchors": 36571,
+      "vocabulary_size": 3480,
+      "mixed_lexicon_size": 8,
+      "selection_sha256": "39e96ffb48f43c789aed0df08eb7687ef59527e5cff8d77dedb29b99daf1e75d",
+      "model_sha256": "916317206bae9eca5a81cb88f6432766b1a7b7cfdee3eccdb4fb1e9b73418e4b",
+      "seconds": 3.87
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "other_genres",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        57
+      ],
+      "features": 37947,
+      "training_documents": 193,
+      "training_sentences": 7098,
+      "training_genre_counts": {
+        "weblog": 4485,
+        "email": 5650,
+        "newsgroup": 4338,
+        "answers": 5527
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3164,
+        "lowercase": 16468,
+        "all_uppercase": 330,
+        "mixed_case": 38
+      },
+      "lowercase_context_tokens_including_anchors": 51240,
+      "vocabulary_size": 4816,
+      "mixed_lexicon_size": 33,
+      "selection_sha256": "6714a05823bf26b40c89a3ab61a985df7868d87cac2c17b01877ccbf7b05a4a2",
+      "model_sha256": "ae60cbe978b6624d189e2d46aa5e1daf579bfe211f38808022163f2a1b527051",
+      "seconds": 1.5
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "in_genre",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        218
+      ],
+      "features": 28262,
+      "training_documents": 347,
+      "training_sentences": 2649,
+      "training_genre_counts": {
+        "reviews": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2375,
+        "lowercase": 17109,
+        "all_uppercase": 508,
+        "mixed_case": 8
+      },
+      "lowercase_context_tokens_including_anchors": 36589,
+      "vocabulary_size": 3477,
+      "mixed_lexicon_size": 5,
+      "selection_sha256": "3f35f8da4ea6701d90c9276cadcb4406ddd92b8aeca12983d12033becb449ae7",
+      "model_sha256": "63723299b24079d6cd8a18b9f192a4429b1bddd82f9b4eb51642bc9ce7a05ccc",
+      "seconds": 2.86
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "other_genres",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        56
+      ],
+      "features": 37614,
+      "training_documents": 193,
+      "training_sentences": 7097,
+      "training_genre_counts": {
+        "weblog": 4361,
+        "email": 5690,
+        "newsgroup": 4324,
+        "answers": 5625
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3016,
+        "lowercase": 16588,
+        "all_uppercase": 357,
+        "mixed_case": 39
+      },
+      "lowercase_context_tokens_including_anchors": 51425,
+      "vocabulary_size": 4840,
+      "mixed_lexicon_size": 37,
+      "selection_sha256": "c52a1f76d719514147fb39db633d373d0a3e62b072166fc43db486f5bbfd7ddc",
+      "model_sha256": "2393dacd39cbca4e7593bb0aad1eaead32847f7ed5652a47d5506357f0ed7379",
+      "seconds": 1.47
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "in_genre",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        176
+      ],
+      "features": 28243,
+      "training_documents": 347,
+      "training_sentences": 2652,
+      "training_genre_counts": {
+        "reviews": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2433,
+        "lowercase": 17089,
+        "all_uppercase": 471,
+        "mixed_case": 7
+      },
+      "lowercase_context_tokens_including_anchors": 36617,
+      "vocabulary_size": 3479,
+      "mixed_lexicon_size": 6,
+      "selection_sha256": "f7ee98647b0e9608edc8a5ce54ceee4a5196181760c1f25fe0d298c5a1166e77",
+      "model_sha256": "1dc4c8574a381affda2efaffae71cc8a18a9a917edbaecda6bfee4af1f0c16da",
+      "seconds": 2.43
+    },
+    {
+      "target_genre": "reviews",
+      "condition": "other_genres",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        62
+      ],
+      "features": 38165,
+      "training_documents": 193,
+      "training_sentences": 7127,
+      "training_genre_counts": {
+        "weblog": 4377,
+        "email": 5725,
+        "newsgroup": 4286,
+        "answers": 5612
+      },
+      "training_label_counts": {
+        "lowercase": 16459,
+        "initial_uppercase": 3169,
+        "mixed_case": 47,
+        "all_uppercase": 325
+      },
+      "lowercase_context_tokens_including_anchors": 51403,
+      "vocabulary_size": 4952,
+      "mixed_lexicon_size": 42,
+      "selection_sha256": "dbd1a81b7af16cf904c21a3cf359e758762dc7239f0e026c95e4c5d5393dc3e3",
+      "model_sha256": "de1bf16a8313928107202ecd9d79b159179b1690d798fe6de3f44bba148ebb50",
+      "seconds": 1.5
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "in_genre",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        60
+      ],
+      "features": 35288,
+      "training_documents": 17,
+      "training_sentences": 1549,
+      "training_genre_counts": {
+        "weblog": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3313,
+        "lowercase": 16427,
+        "all_uppercase": 234,
+        "mixed_case": 26
+      },
+      "lowercase_context_tokens_including_anchors": 31781,
+      "vocabulary_size": 4456,
+      "mixed_lexicon_size": 26,
+      "selection_sha256": "8467fa775425277806a982fc5df3ac84401ab069f4c67da9429ebb072848fdbb",
+      "model_sha256": "e67177cd62dda0355f4f95223898bf81db2e3b5d394e1605a2258273b08107ec",
+      "seconds": 1.46
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "other_genres",
+      "sampling_seed": 11,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        84
+      ],
+      "features": 36158,
+      "training_documents": 523,
+      "training_sentences": 7764,
+      "training_genre_counts": {
+        "email": 5321,
+        "newsgroup": 3999,
+        "answers": 5216,
+        "reviews": 5464
+      },
+      "training_label_counts": {
+        "initial_uppercase": 2916,
+        "lowercase": 16668,
+        "all_uppercase": 382,
+        "mixed_case": 34
+      },
+      "lowercase_context_tokens_including_anchors": 51768,
+      "vocabulary_size": 4609,
+      "mixed_lexicon_size": 28,
+      "selection_sha256": "fb435bd7f7dd87a6fc87cf2209f1ac041a4c1ffe1660d97c3dca596256745b62",
+      "model_sha256": "2ea81671b6dd241b51904cf1d3f6d62c79409302e9c8556c82edfe1f51314eda",
+      "seconds": 1.71
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "in_genre",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        66
+      ],
+      "features": 35354,
+      "training_documents": 17,
+      "training_sentences": 1554,
+      "training_genre_counts": {
+        "weblog": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3366,
+        "lowercase": 16383,
+        "all_uppercase": 227,
+        "mixed_case": 24
+      },
+      "lowercase_context_tokens_including_anchors": 31896,
+      "vocabulary_size": 4496,
+      "mixed_lexicon_size": 23,
+      "selection_sha256": "48301139d9c4c903fdcb5640edd8689d2ecf3833af3fbdd926166cb8a49abba1",
+      "model_sha256": "19d9f03b900275839777623a47692e70c6bfbef2bdb6e03fb272d27f81cb0236",
+      "seconds": 1.51
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "other_genres",
+      "sampling_seed": 22,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        81
+      ],
+      "features": 35953,
+      "training_documents": 523,
+      "training_sentences": 7802,
+      "training_genre_counts": {
+        "email": 5338,
+        "newsgroup": 4047,
+        "answers": 5259,
+        "reviews": 5356
+      },
+      "training_label_counts": {
+        "lowercase": 16679,
+        "initial_uppercase": 2866,
+        "all_uppercase": 418,
+        "mixed_case": 37
+      },
+      "lowercase_context_tokens_including_anchors": 51864,
+      "vocabulary_size": 4501,
+      "mixed_lexicon_size": 34,
+      "selection_sha256": "5f004e73e0cc3902a665a446979369e197f48edc90bf5054770f7ca96602baa2",
+      "model_sha256": "1a1c461dea3857884f88376b815d5176541d0770006af8087e780b467f5a5545",
+      "seconds": 1.72
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "in_genre",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        64
+      ],
+      "features": 35563,
+      "training_documents": 17,
+      "training_sentences": 1556,
+      "training_genre_counts": {
+        "weblog": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3327,
+        "lowercase": 16415,
+        "all_uppercase": 230,
+        "mixed_case": 28
+      },
+      "lowercase_context_tokens_including_anchors": 31874,
+      "vocabulary_size": 4441,
+      "mixed_lexicon_size": 27,
+      "selection_sha256": "084cb6df5bdf60c044cd5e6471cb18621d7348b26ae01880aac3f9c2c16ef466",
+      "model_sha256": "a2ba0ec92d1d571a6e8bbd3280c64a6716cbf0c714d5078a346048c1fbbb18bc",
+      "seconds": 1.49
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "other_genres",
+      "sampling_seed": 33,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        87
+      ],
+      "features": 35907,
+      "training_documents": 523,
+      "training_sentences": 7742,
+      "training_genre_counts": {
+        "email": 5341,
+        "newsgroup": 4135,
+        "answers": 5255,
+        "reviews": 5269
+      },
+      "training_label_counts": {
+        "lowercase": 16700,
+        "initial_uppercase": 2835,
+        "mixed_case": 42,
+        "all_uppercase": 423
+      },
+      "lowercase_context_tokens_including_anchors": 51726,
+      "vocabulary_size": 4522,
+      "mixed_lexicon_size": 37,
+      "selection_sha256": "f38633bbb024e5ffdf82567236a7612aeb4db4ccdd142cc2ae1af4eef6fcd6d0",
+      "model_sha256": "3bcfd0314841ce0ded691caefc222ad5fa4f27475eb25dde29551be8214ba5b8",
+      "seconds": 1.72
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "in_genre",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        60
+      ],
+      "features": 35722,
+      "training_documents": 17,
+      "training_sentences": 1558,
+      "training_genre_counts": {
+        "weblog": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3373,
+        "lowercase": 16383,
+        "all_uppercase": 220,
+        "mixed_case": 24
+      },
+      "lowercase_context_tokens_including_anchors": 31754,
+      "vocabulary_size": 4468,
+      "mixed_lexicon_size": 24,
+      "selection_sha256": "c2aa92d979d7eac079caf0429456fd4b9ac4e53cc89d4aff3d4561a0b1153c47",
+      "model_sha256": "4c58e6d96360d4c506585ec4b8414b8576550a7f4e91f1e73d9348f98de193ef",
+      "seconds": 1.47
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "other_genres",
+      "sampling_seed": 44,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        70
+      ],
+      "features": 35615,
+      "training_documents": 523,
+      "training_sentences": 7734,
+      "training_genre_counts": {
+        "email": 5275,
+        "newsgroup": 4012,
+        "answers": 5229,
+        "reviews": 5484
+      },
+      "training_label_counts": {
+        "lowercase": 16637,
+        "all_uppercase": 430,
+        "initial_uppercase": 2896,
+        "mixed_case": 37
+      },
+      "lowercase_context_tokens_including_anchors": 51766,
+      "vocabulary_size": 4611,
+      "mixed_lexicon_size": 31,
+      "selection_sha256": "2e6b32ecfab4b716e1e673e4b948bf27cc7ead58cd06c80ec0d2d94c5fcf0b96",
+      "model_sha256": "46c3b3d949fb38871413a504932b64f571fe5b2d07a6c442ad866d55a20f3e78",
+      "seconds": 1.54
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "in_genre",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        52
+      ],
+      "features": 35185,
+      "training_documents": 17,
+      "training_sentences": 1558,
+      "training_genre_counts": {
+        "weblog": 20000
+      },
+      "training_label_counts": {
+        "initial_uppercase": 3408,
+        "lowercase": 16361,
+        "all_uppercase": 202,
+        "mixed_case": 29
+      },
+      "lowercase_context_tokens_including_anchors": 31914,
+      "vocabulary_size": 4457,
+      "mixed_lexicon_size": 28,
+      "selection_sha256": "0d0029bc83067d761bbffa9568cb2b91d8e639f4bd36dae5e8ab9a537891dafc",
+      "model_sha256": "5982a1aed8f73a24f03bf4804b911670f678ec0743b8953ce2834eb34ee2fd49",
+      "seconds": 1.33
+    },
+    {
+      "target_genre": "weblog",
+      "condition": "other_genres",
+      "sampling_seed": 55,
+      "split": "dev",
+      "training_cased_tokens": 20000,
+      "converged": true,
+      "iterations": [
+        67
+      ],
+      "features": 35807,
+      "training_documents": 523,
+      "training_sentences": 7760,
+      "training_genre_counts": {
+        "email": 5359,
+        "newsgroup": 4103,
+        "answers": 5281,
+        "reviews": 5257
+      },
+      "training_label_counts": {
+        "lowercase": 16742,
+        "initial_uppercase": 2805,
+        "all_uppercase": 423,
+        "mixed_case": 30
+      },
+      "lowercase_context_tokens_including_anchors": 51869,
+      "vocabulary_size": 4586,
+      "mixed_lexicon_size": 29,
+      "selection_sha256": "2b98133a656b18d08bd43da1cd7760744f0883645bbb25efdd514be3bc3713b8",
+      "model_sha256": "db986254656db5f9aec8dd7b80819eda71d0e2524714dfb282e553aeca22b7c0",
+      "seconds": 1.58
+    }
+  ],
+  "models_newly_trained": 50,
+  "independent_metric_checks_passed": 50,
+  "frozen_artifacts_unchanged": true,
+  "frozen_manifest_sha256": "6e06c0f8ae573fdc7992551f87f4e581623bfd3d6a724bf9e56773d80a1aa6ba",
+  "data_sha256": {
+    "tokens_train.tsv": "02a4b2750b72f74715ec319b906daa0c546055fc173de9b5cf4fbc0b4da198c7",
+    "tokens_dev.tsv": "ed7501ae8ccc9830821734bd6e3ee549835038c09098ba84ee55bb2d58e3d32a"
+  },
+  "source_sha256": "7a0583cf17eed990a24dd4d549c3a7aa9b96031317f87dd736313728a0d80b8c",
+  "environment": {
+    "python": "3.14.0",
+    "sklearn": "1.9.1"
+  },
+  "elapsed_seconds": 90.01
+}
