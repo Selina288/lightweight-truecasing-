@@ -15,7 +15,7 @@ python src/demo_server.py
 
 ## 从 GitHub 首次下载
 
-GitHub 不包含原始数据、处理后的数据或训练权重。没有这些文件时，网页仅能使用两个不依赖数据的 baseline；B/C 等选项会禁用。
+GitHub 现已在 dataset/ 提供原始数据及许可说明；处理后的数据和训练权重仍不包含。没有这些文件时，网页仅能使用两个不依赖数据的 baseline；B/C 等选项会禁用。
 
 原实验使用 Python 3.14.0。先确认 `python3 --version`，在项目根目录运行：
 
@@ -50,3 +50,7 @@ python src/demo_server.py
 ## 当前实验状态
 
 最终 test 已完成，原实验记录为 27 项测试通过。8 个选定 dev 例子已按用户报告记录为团队确认，其余 11 个未确认。见 [确认状态](docs/TEAM_REVIEW_STATUS.md)。此说明取代早期关于前端、最终测试和全部例子待确认的说法；不重新训练原模型或改动已有分数。
+
+## 字符特征分析
+
+新增字符家族消融已在 dev 完成，现有 C 模型和网页默认模型未替换。新模型用于独立研究比较，不会自动出现在网页菜单中；不能把新 dev 分数说成 test 分数。见 results/character_ablation/REPORT.md。

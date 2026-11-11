@@ -25,6 +25,21 @@ Scores exclude tokens without cased letters. The primary metric is macro-F1 over
 
 C was selected using development results before final testing. On the same 1,652 test tokens unseen in full training, C reaches 68.16% exact accuracy versus 59.38% for B. Differences are descriptive; no significance tests or confidence intervals were performed. See [the final report](results/final_test/REPORT.md), [all-system scores](results/final_test/all_systems_summary.tsv) and [genre conditions](results/final_test/genre_overview.tsv).
 
+The test scores above all use the same 21,430 cased tokens. Leaving everything lowercase already gives 80.25% exact accuracy; C improves this by 11.25 percentage points. Its 71.65% capitalization-required accuracy instead uses only the 4,233 gold tokens requiring capitals. These denominators must not be confused. Four-class macro-F1 gives each casing category equal weight, so the majority lowercase class does not dominate the ranking. C is a token classifier with character features, not a character-by-character generator.
+
+## Character-feature analysis
+
+Two requested updates are complete: [a four-paper evaluation audit](docs/EVALUATION_COMPARISON.md), and [a character-family dev comparison](results/character_ablation/REPORT.md). The audit checks published protocols; it is not a matched external-system benchmark.
+
+| System | Dev exact accuracy | Dev macro-F1 | Unseen dev exact accuracy |
+| --- | ---: | ---: | ---: |
+| B: context | 91.43% | 0.5245 | 62.19% |
+| B + prefixes/suffixes | 92.26% | 0.5682 | 69.87% |
+| B + character n-grams | 92.33% | 0.5474 | 69.99% |
+| C: both families | 92.26% | 0.5688 | 69.93% |
+
+The new fits use train/dev only, after the original test results were known. B/C references reproduce their saved dev scores; no original model or final-test result changed. Affixes nearly match full C on macro-F1. N-grams alone have slightly higher exact accuracy but lower macro-F1; this does not replace C under the original ranking rule. The study is exploratory and single-seed, not a new confirmatory test or proof that an overlapping feature family is unnecessary. Independent metrics checked all four overall dev scores, both new fits converged, and all 34 tests pass. Size-matched genre training and an actual external-system run remain future work.
+
 ## Models and evaluation
 
 - A uses the current lowercase word, sentence-initial position and scaled length.
@@ -48,11 +63,11 @@ python -m unittest discover -s tests -v
 python src/verify_team_review.py
 ```
 
-The recorded research run passed 27 tests. After this cleanup, all 31 tests pass (the original 27 plus four repository-record checks). The review command checks the current 8/11 split using tracked files only. See [the cleanup verification](docs/REPOSITORY_CLEANUP_CHECK.json).
+The recorded research run passed 27 tests. The cleanup passed 31 tests (27 original plus four repository-record checks); the character-family analysis adds three family/split checks, with all 34 passing. The equal-budget genre follow-up adds three sampling/context/aggregation tests; all 37 now pass. The review command checks the current 8/11 split using tracked files only. See [the cleanup verification](docs/REPOSITORY_CLEANUP_CHECK.json).
 
 ### Data and real-model demo
 
-Data and model weights are intentionally excluded from Git. Follow [the reproducibility guide](docs/REPRODUCIBILITY.md) to obtain and check the corpus. The saved source README identifies v2.18; the exact file hashes identify the experiment inputs, rather than upstream's moving master branch.
+The exact original corpus is now available for inspection in [dataset/](https://github.com/Selina288/lightweight-truecasing-/tree/main/dataset), with source attribution and license. Processed data, local data/raw copies, predictions and model weights remain excluded from Git. Follow [the reproducibility guide](docs/REPRODUCIBILITY.md) to place and check the corpus. The saved source README identifies v2.18; the exact file hashes identify the experiment inputs, rather than upstream's moving master branch.
 
 After placing the three matching files under `data/raw/UD_English-EWT/`, run the following in a separate fresh checkout. Training creates local demo models; do not train over the original frozen model directory.
 
@@ -73,6 +88,7 @@ Open http://127.0.0.1:8765 and keep the terminal running; stop with Ctrl+C. With
 | `results/preprocessing/` | Dataset summary and train/dev label distributions |
 | `results/baselines/`, `results/logreg/`, `results/ablation/` | Earlier development comparisons |
 | `results/crossgenre/`, `results/ingenre/` | Restricted-training development experiments |
+| `results/size_matched_genre/` | Exploratory equal-budget C comparison: 20,000 supervised tokens, five subsamples per condition/target |
 | `results/error_analysis/` | Error counts, 19 retained examples and eight selected examples |
 | `results/final_dev/` | Unified development replication |
 | `results/final_test/` | Six-system final scores and three genre conditions |
@@ -91,3 +107,10 @@ Character features improve overall and unseen-word scores, but some predictions 
 The demo runs locally, preserves punctuation/spacing and highlights case changes. Its displayed metrics are saved **dev** results, not accuracy on a typed sentence. It is not a public deployment.
 
 Data originate from [Universal Dependencies English EWT](https://github.com/UniversalDependencies/UD_English-EWT). Corpus-derived excerpts retain CC BY-SA 4.0 terms; see [the retained data license](results/error_analysis/DATA_LICENSE.txt). Contexts are shortened with target brackets added. Prior-work references remain in the historical archive.
+
+
+## Equal-budget genre follow-up
+
+A new exploratory **dev-only** comparison controls the supervised cased-token budget at 20,000 in each condition. Fifty converged C fits compare target-only vs pooled other-four-genres training over five sampling seeds, with original classifier parameters unchanged. In-genre mean macro-F1 is higher for email (0.5820 vs 0.4464), newsgroup (0.5237 vs 0.4652) and weblog (0.6032 vs 0.5302); answers reverses the direction (0.4359 vs 0.4591), while reviews differs little (0.4380 vs 0.4362). All five paired differences share the reported direction for the first four targets, but not reviews. These are descriptive results, not significance tests.
+
+This matches labeled-token counts, not vocabulary, class priors, document counts, lowercase context exposure or source diversity. It does not establish an isolated causal genre effect. Original final test results and model selection remain unchanged; no new test tokens were read. See [the protocol](docs/SIZE_MATCHED_GENRE_PROTOCOL.md), [English report](results/size_matched_genre/REPORT.md) and [中文说明](results/size_matched_genre/REPORT_zh.md). Reproduction from the complete original local project: `python src/size_matched_genre.py`, then `python src/verify_size_matched_genre.py`; existing runs are protected against overwrite. This follow-up postdates original test exposure.

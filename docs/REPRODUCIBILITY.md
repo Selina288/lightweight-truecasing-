@@ -2,7 +2,7 @@
 
 ## Choose the intended activity
 
-The public repository contains source, tests, aggregate results, metadata, a local web interface and qualitative review records. It excludes raw/processed data, token predictions and trained model weights. Reading the published results needs no training. Running the trained demo from a fresh checkout requires local data and model generation. Reconstructing the exact final frozen run additionally requires byte-identical original artifacts.
+The public repository contains source, tests, aggregate results, metadata, a local web interface and qualitative review records. An inspection copy of original raw data is now in dataset/ with license and hashes; local raw/processed working files, token predictions and trained model weights remain ignored. Reading the published results needs no training. Running the trained demo from a fresh checkout requires local data and model generation. Reconstructing the exact final frozen run additionally requires byte-identical original artifacts.
 
 Keep the original full experiment folder unchanged. Use a separate clone for new training. The commands below do not authorize model selection or tuning on the already seen test set.
 
@@ -94,3 +94,23 @@ Do not run `final_evaluate.py` merely to view results. A GitHub-only checkout la
 ## Scope of this cleanup
 
 The cleanup restores missing review files, records eight confirmed examples, provides provenance checks and clarifies documentation. It changes no frozen source file, trained model, gold token or quantitative score. Dependency installation, upstream archive identity and a fresh training reproduction are not claimed as newly verified. Paper, slides and actual individual contributions are outside this update.
+
+## Character-family analysis
+
+The new script src/character_ablation.py compares frozen B/C references with B+affixes and B+character-n-grams on dev only. It needs the complete original local experiment package, including every original artifact listed in FINAL_FROZEN_MANIFEST.json (not just two reference weights); it validates that manifest before and after running. A public GitHub checkout with newly regenerated weights is not guaranteed to satisfy those historical hashes.
+
+```bash
+python -m unittest discover -s tests -v
+python src/character_ablation.py
+```
+
+The completed results are already in results/character_ablation/. Do not rerun over them: the script refuses existing follow-up output, model or prediction directories. Original model weights are unchanged; new weights and predictions remain local. This follow-up adds three tests, for 34 total passing tests. Its report records that original test outcomes were known before design. It does not conduct size-matched genre training or run an external truecaser. See EVALUATION_COMPARISON.md for the paper-level metric audit.
+
+
+## Equal-budget genre follow-up
+
+The exploratory equal-budget follow-up is complete: 50 new C fits, exactly 20,000 supervised cased tokens per fit, five target genres, two source conditions and five training-subsample seeds. Solver seed and original C parameters stay fixed. It uses only train/dev, preserving original frozen artifacts and final test outputs. See [the full protocol](SIZE_MATCHED_GENRE_PROTOCOL.md) and [the results](../results/size_matched_genre/REPORT.md).
+
+From the complete original local project, `python src/size_matched_genre.py` runs the experiment and `python src/verify_size_matched_genre.py` audits it. Existing run directories are protected against overwrite. These commands require historical frozen artifacts; do not overwrite the original archived model directory with regenerated weights. The recorded run passed 37 tests and independently reloaded all 50 new models to reproduce dev predictions and three overall metrics per fit.
+
+The supervised count is matched, not document counts, word-type exposure, label priors or pooled-source diversity. Standard deviations are over overlapping training subsamples on fixed dev, not confidence intervals over unseen evaluation documents. The follow-up postdates original test exposure and does not establish new confirmatory test results.
